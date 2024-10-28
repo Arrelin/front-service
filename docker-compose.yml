@@ -1,0 +1,12 @@
+services:
+  postgresql-front:
+    image: postgres:17.0
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2123
+      POSTGRES_DB: front
+    volumes:
+      - ./data:/db/data
+      - ./init:/docker-entrypoint-initdb.d

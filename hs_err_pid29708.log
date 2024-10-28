@@ -1,0 +1,1262 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (g1CollectedHeap.cpp:3100), pid=29708, tid=34612
+#  Error: ShouldNotReachHere()
+#
+# JRE version: OpenJDK Runtime Environment JBR-21.0.4+13-509.17-jcef (21.0.4+13) (build 21.0.4+13-b509.17)
+# Java VM: OpenJDK 64-Bit Server VM JBR-21.0.4+13-509.17-jcef (21.0.4+13-b509.17, mixed mode, emulated-client, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   https://youtrack.jetbrains.com/issues/JBR
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:51653,suspend=y,server=n -XX:TieredStopAtLevel=1 -Dspring.output.ansi.enabled=always -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -Dmanagement.endpoints.jmx.exposure.include=* --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.desktop/java.beans=ALL-UNNAMED -XX:+AllowEnhancedClassRedefinition -XX:+ClassUnloading -javaagent:C:\Users\morgu\.vaadin\intellij-plugin\hotswap-agent.jar -javaagent:C:\Users\morgu\AppData\Local\JetBrains\IntelliJIdea2024.2\captureAgent\debugger-agent.jar=file:/C:/Users/morgu/AppData/Local/Temp/capture.props -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false -Ddebugger.agent.enable.coroutines=true -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 com.arrelin.front.FrontApp
+
+Host: AMD Ryzen 5 5600X 6-Core Processor             , 12 cores, 31G,  Windows 11 , 64 bit Build 22000 (10.0.22000.2538)
+Time: Fri Oct 18 12:08:11 2024 Russia TZ 2 Standard Time elapsed time: 144.670097 seconds (0d 0h 2m 24s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001f84431a710):  VMThread "VM Thread"          [id=34612, stack(0x000000319ae00000,0x000000319af00000) (1024K)]
+
+Stack: [0x000000319ae00000,0x000000319af00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6e36d9]
+V  [jvm.dll+0x8c0bd3]
+V  [jvm.dll+0x8c312e]
+V  [jvm.dll+0x8c37c7]
+V  [jvm.dll+0x2881d7]
+V  [jvm.dll+0x2881fc]
+V  [jvm.dll+0x288150]
+V  [jvm.dll+0x339185]
+V  [jvm.dll+0x23a9b8]
+V  [jvm.dll+0x543a61]
+V  [jvm.dll+0x8c9598]
+V  [jvm.dll+0x8ca914]
+V  [jvm.dll+0x8cae50]
+V  [jvm.dll+0x8cb0e3]
+V  [jvm.dll+0x868868]
+V  [jvm.dll+0x6e1edd]
+C  [ucrtbase.dll+0x26c0c]
+C  [KERNEL32.DLL+0x153e0]
+C  [ntdll.dll+0x485b]
+
+VM_Operation (0x000000319baff580): RedefineClasses, mode: safepoint, requested by thread 0x000001f8445b85f0
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x000001f856ee0780, length=95, elements={
+0x000001f84437c550, 0x000001f84437d270, 0x000001f844387160, 0x000001f844387d20,
+0x000001f844385fa0, 0x000001f844389fb0, 0x000001f84438aa10, 0x000001f844453b30,
+0x000001f8445b85f0, 0x000001f8445b8e80, 0x000001f8445ce180, 0x000001f849baf0e0,
+0x000001f849bca880, 0x000001f849bccf00, 0x000001f849bce4c0, 0x000001f84a4efdc0,
+0x000001f84a1df070, 0x000001f84b0d4270, 0x000001f84b0d6340, 0x000001f84b0d5620,
+0x000001f84b0d5cb0, 0x000001f84c710c40, 0x000001f84c70f890, 0x000001f84c70f200,
+0x000001f84c7140c0, 0x000001f84c70eb70, 0x000001f84c714de0, 0x000001f84c7112d0,
+0x000001f84c715470, 0x000001f84c7105b0, 0x000001f84c716190, 0x000001f84c711960,
+0x000001f84c711ff0, 0x000001f84c712680, 0x000001f84c7133a0, 0x000001f84c713a30,
+0x000001f84c921c20, 0x000001f84c920f00, 0x000001f84c91ee30, 0x000001f84c91f4c0,
+0x000001f84c9222b0, 0x000001f84c91fb50, 0x000001f84c920870, 0x000001f85be725e0,
+0x000001f85be746b0, 0x000001f85be72c70, 0x000001f85be6f160, 0x000001f85be6f7f0,
+0x000001f85be70510, 0x000001f85be70ba0, 0x000001f85be71230, 0x000001f84c34f8f0,
+0x000001f84c352d70, 0x000001f856edb330, 0x000001f856edb9c0, 0x000001f856ed7eb0,
+0x000001f856eda610, 0x000001f856edaca0, 0x000001f8593c92d0, 0x000001f8593cd470,
+0x000001f8593c64e0, 0x000001f8593ceeb0, 0x000001f8593cb3a0, 0x000001f8593cc0c0,
+0x000001f8593cad10, 0x000001f8593c6b70, 0x000001f8593c57c0, 0x000001f856ed6b00,
+0x000001f856ed50c0, 0x000001f856edc6e0, 0x000001f856ed9260, 0x000001f856ed9f80,
+0x000001f856ed6470, 0x000001f856ed7820, 0x000001f856ed98f0, 0x000001f8593c9960,
+0x000001f8593c7890, 0x000001f8593ca680, 0x000001f8593cc750, 0x000001f8593ce190,
+0x000001f8593cfbd0, 0x000001f8593d0260, 0x000001f8593c5130, 0x000001f85be71f50,
+0x000001f8593cba30, 0x000001f8593c5e50, 0x000001f8593d36e0, 0x000001f8593d2330,
+0x000001f85e9b2e10, 0x000001f85e9b2070, 0x000001f8593d08f0, 0x000001f8593ccde0,
+0x000001f8593cdb00, 0x000001f8593d4400, 0x000001f8593c8c40
+}
+
+Java Threads: ( => current thread )
+  0x000001f84437c550 JavaThread "Reference Handler"          daemon [_thread_blocked, id=18424, stack(0x000000319af00000,0x000000319b000000) (1024K)]
+  0x000001f84437d270 JavaThread "Finalizer"                  daemon [_thread_blocked, id=7104, stack(0x000000319b000000,0x000000319b100000) (1024K)]
+  0x000001f844387160 JavaThread "Signal Dispatcher"          daemon [_thread_blocked, id=4152, stack(0x000000319b100000,0x000000319b200000) (1024K)]
+  0x000001f844387d20 JavaThread "Attach Listener"            daemon [_thread_blocked, id=18340, stack(0x000000319b200000,0x000000319b300000) (1024K)]
+  0x000001f844385fa0 JavaThread "Service Thread"             daemon [_thread_blocked, id=27496, stack(0x000000319b300000,0x000000319b400000) (1024K)]
+  0x000001f844389fb0 JavaThread "Monitor Deflation Thread"   daemon [_thread_blocked, id=8580, stack(0x000000319b400000,0x000000319b500000) (1024K)]
+  0x000001f84438aa10 JavaThread "C1 CompilerThread0"         daemon [_thread_blocked, id=4212, stack(0x000000319b500000,0x000000319b600000) (1024K)]
+  0x000001f844453b30 JavaThread "Common-Cleaner"             daemon [_thread_blocked, id=35668, stack(0x000000319b600000,0x000000319b700000) (1024K)]
+  0x000001f8445b85f0 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_blocked, id=8884, stack(0x000000319ba00000,0x000000319bb00000) (1024K)]
+  0x000001f8445b8e80 JavaThread "JDWP Event Helper Thread"   daemon [_thread_blocked, id=8516, stack(0x000000319bb00000,0x000000319bc00000) (1024K)]
+  0x000001f8445ce180 JavaThread "JDWP Command Reader"        daemon [_thread_in_native, id=12268, stack(0x000000319bc00000,0x000000319bd00000) (1024K)]
+  0x000001f849baf0e0 JavaThread "FileSystemWatchService"     daemon [_thread_blocked, id=1972, stack(0x000000319bd00000,0x000000319be00000) (1024K)]
+  0x000001f849bca880 JavaThread "HotSwap Watcher"            daemon [_thread_blocked, id=15024, stack(0x000000319be00000,0x000000319bf00000) (1024K)]
+  0x000001f849bccf00 JavaThread "HotSwap Dispatcher"         daemon [_thread_blocked, id=22884, stack(0x000000319bf00000,0x000000319c000000) (1024K)]
+  0x000001f849bce4c0 JavaThread "Thread-2"                   daemon [_thread_blocked, id=13624, stack(0x000000319c000000,0x000000319c100000) (1024K)]
+  0x000001f84a4efdc0 JavaThread "Notification Thread"        daemon [_thread_blocked, id=31612, stack(0x000000319ca00000,0x000000319cb00000) (1024K)]
+  0x000001f84a1df070 JavaThread "RMI TCP Accept-0"           daemon [_thread_in_native, id=5076, stack(0x000000319cb00000,0x000000319cc00000) (1024K)]
+  0x000001f84b0d4270 JavaThread "JNA Cleaner"                daemon [_thread_blocked, id=1480, stack(0x000000319ce00000,0x000000319cf00000) (1024K)]
+  0x000001f84b0d6340 JavaThread "ForkJoinPool.commonPool-worker-1" daemon [_thread_blocked, id=21900, stack(0x000000319d200000,0x000000319d300000) (1024K)]
+  0x000001f84b0d5620 JavaThread "ForkJoinPool.commonPool-worker-3" daemon [_thread_blocked, id=26228, stack(0x000000319d400000,0x000000319d500000) (1024K)]
+  0x000001f84b0d5cb0 JavaThread "Catalina-utility-1"                [_thread_blocked, id=22980, stack(0x000000319d500000,0x000000319d600000) (1024K)]
+  0x000001f84c710c40 JavaThread "Catalina-utility-2"                [_thread_blocked, id=3868, stack(0x000000319d600000,0x000000319d700000) (1024K)]
+  0x000001f84c70f890 JavaThread "container-0"                       [_thread_blocked, id=35396, stack(0x000000319d700000,0x000000319d800000) (1024K)]
+  0x000001f84c70f200 JavaThread "PostgreSQL-JDBC-Cleaner"    daemon [_thread_blocked, id=24364, stack(0x000000319d900000,0x000000319da00000) (1024K)]
+  0x000001f84c7140c0 JavaThread "HikariPool-1 housekeeper"   daemon [_thread_blocked, id=24860, stack(0x000000319da00000,0x000000319db00000) (1024K)]
+  0x000001f84c70eb70 JavaThread "FileSystemWatchService"     daemon [_thread_in_native, id=17520, stack(0x000000319dc00000,0x000000319dd00000) (1024K)]
+  0x000001f84c714de0 JavaThread "boundedElastic-evictor-1"   daemon [_thread_blocked, id=22372, stack(0x000000319dd00000,0x000000319de00000) (1024K)]
+  0x000001f84c7112d0 JavaThread "File Watcher"               daemon [_thread_blocked, id=20784, stack(0x000000319de00000,0x000000319df00000) (1024K)]
+  0x000001f84c715470 JavaThread "Live Reload Server"         daemon [_thread_in_native, id=9520, stack(0x000000319e000000,0x000000319e100000) (1024K)]
+  0x000001f84c7105b0 JavaThread "Atmosphere-Scheduler-0"     daemon [_thread_blocked, id=32736, stack(0x000000319df00000,0x000000319e000000) (1024K)]
+  0x000001f84c716190 JavaThread "http-nio-8084-exec-1"       daemon [_thread_blocked, id=25176, stack(0x000000319e300000,0x000000319e400000) (1024K)]
+  0x000001f84c711960 JavaThread "http-nio-8084-exec-2"       daemon [_thread_blocked, id=13352, stack(0x000000319e400000,0x000000319e500000) (1024K)]
+  0x000001f84c711ff0 JavaThread "http-nio-8084-exec-3"       daemon [_thread_blocked, id=5400, stack(0x000000319e500000,0x000000319e600000) (1024K)]
+  0x000001f84c712680 JavaThread "http-nio-8084-exec-4"       daemon [_thread_blocked, id=32672, stack(0x000000319e600000,0x000000319e700000) (1024K)]
+  0x000001f84c7133a0 JavaThread "http-nio-8084-exec-5"       daemon [_thread_blocked, id=7292, stack(0x000000319e700000,0x000000319e800000) (1024K)]
+  0x000001f84c713a30 JavaThread "http-nio-8084-exec-6"       daemon [_thread_blocked, id=22096, stack(0x000000319e800000,0x000000319e900000) (1024K)]
+  0x000001f84c921c20 JavaThread "http-nio-8084-exec-7"       daemon [_thread_blocked, id=17016, stack(0x000000319e900000,0x000000319ea00000) (1024K)]
+  0x000001f84c920f00 JavaThread "http-nio-8084-exec-8"       daemon [_thread_blocked, id=22672, stack(0x000000319ea00000,0x000000319eb00000) (1024K)]
+  0x000001f84c91ee30 JavaThread "http-nio-8084-exec-9"       daemon [_thread_blocked, id=13512, stack(0x000000319eb00000,0x000000319ec00000) (1024K)]
+  0x000001f84c91f4c0 JavaThread "http-nio-8084-exec-10"      daemon [_thread_blocked, id=18064, stack(0x000000319ec00000,0x000000319ed00000) (1024K)]
+  0x000001f84c9222b0 JavaThread "http-nio-8084-Poller"       daemon [_thread_in_native, id=18336, stack(0x000000319ed00000,0x000000319ee00000) (1024K)]
+  0x000001f84c91fb50 JavaThread "http-nio-8084-Acceptor"     daemon [_thread_in_native, id=23976, stack(0x000000319ee00000,0x000000319ef00000) (1024K)]
+  0x000001f84c920870 JavaThread "DestroyJavaVM"                     [_thread_blocked, id=32520, stack(0x000000319a700000,0x000000319a800000) (1024K)]
+  0x000001f85be725e0 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=1560, stack(0x000000319e200000,0x000000319e300000) (1024K)]
+  0x000001f85be746b0 JavaThread "HttpClient-4-SelectorManager" daemon [_thread_in_native, id=31676, stack(0x000000319f800000,0x000000319f900000) (1024K)]
+  0x000001f85be72c70 JavaThread "FileSystemWatchService"     daemon [_thread_in_native, id=24352, stack(0x000000319f900000,0x000000319fa00000) (1024K)]
+  0x000001f85be6f160 JavaThread "HttpClient-5-SelectorManager" daemon [_thread_in_native, id=29640, stack(0x000000319fb00000,0x000000319fc00000) (1024K)]
+  0x000001f85be6f7f0 JavaThread "HttpClient-6-SelectorManager" daemon [_thread_in_native, id=31668, stack(0x000000319fc00000,0x000000319fd00000) (1024K)]
+  0x000001f85be70510 JavaThread "HttpClient-7-SelectorManager" daemon [_thread_in_native, id=28688, stack(0x000000319fd00000,0x000000319fe00000) (1024K)]
+  0x000001f85be70ba0 JavaThread "HttpClient-8-SelectorManager" daemon [_thread_in_native, id=20732, stack(0x000000319fe00000,0x000000319ff00000) (1024K)]
+  0x000001f85be71230 JavaThread "HttpClient-9-SelectorManager" daemon [_thread_in_native, id=31124, stack(0x000000319ff00000,0x00000031a0000000) (1024K)]
+  0x000001f84c34f8f0 JavaThread "HttpClient-10-SelectorManager" daemon [_thread_in_native, id=31664, stack(0x00000031a0000000,0x00000031a0100000) (1024K)]
+  0x000001f84c352d70 JavaThread "HttpClient-4-Worker-0"      daemon [_thread_blocked, id=10444, stack(0x00000031a0800000,0x00000031a0900000) (1024K)]
+  0x000001f856edb330 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=2380, stack(0x00000031a0a00000,0x00000031a0b00000) (1024K)]
+  0x000001f856edb9c0 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=3880, stack(0x00000031a0c00000,0x00000031a0d00000) (1024K)]
+  0x000001f856ed7eb0 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=13904, stack(0x00000031a0d00000,0x00000031a0e00000) (1024K)]
+  0x000001f856eda610 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=8188, stack(0x00000031a0e00000,0x00000031a0f00000) (1024K)]
+  0x000001f856edaca0 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=27392, stack(0x00000031a0f00000,0x00000031a1000000) (1024K)]
+  0x000001f8593c92d0 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=10872, stack(0x00000031a0b00000,0x00000031a0c00000) (1024K)]
+  0x000001f8593cd470 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=35540, stack(0x00000031a1000000,0x00000031a1100000) (1024K)]
+  0x000001f8593c64e0 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=16984, stack(0x00000031a1200000,0x00000031a1300000) (1024K)]
+  0x000001f8593ceeb0 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=33308, stack(0x00000031a1800000,0x00000031a1900000) (1024K)]
+  0x000001f8593cb3a0 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=16348, stack(0x00000031a1900000,0x00000031a1a00000) (1024K)]
+  0x000001f8593cc0c0 JavaThread "Atmosphere-Shared-0"        daemon [_thread_blocked, id=22992, stack(0x00000031a1b00000,0x00000031a1c00000) (1024K)]
+  0x000001f8593cad10 JavaThread "Atmosphere-Scheduler-13"    daemon [_thread_blocked, id=15048, stack(0x00000031a2700000,0x00000031a2800000) (1024K)]
+  0x000001f8593c6b70 JavaThread "Atmosphere-Scheduler-14"    daemon [_thread_blocked, id=8000, stack(0x00000031a2800000,0x00000031a2900000) (1024K)]
+  0x000001f8593c57c0 JavaThread "Atmosphere-Scheduler-16"    daemon [_thread_blocked, id=35356, stack(0x000000319f400000,0x000000319f500000) (1024K)]
+  0x000001f856ed6b00 JavaThread "HttpClient-9-Worker-0"      daemon [_thread_blocked, id=8156, stack(0x000000319b800000,0x000000319b900000) (1024K)]
+  0x000001f856ed50c0 JavaThread "Atmosphere-Scheduler-19"    daemon [_thread_blocked, id=14376, stack(0x000000319db00000,0x000000319dc00000) (1024K)]
+  0x000001f856edc6e0 JavaThread "Atmosphere-Scheduler-20"    daemon [_thread_blocked, id=15688, stack(0x000000319f200000,0x000000319f300000) (1024K)]
+  0x000001f856ed9260 JavaThread "Atmosphere-Scheduler-21"    daemon [_thread_blocked, id=14668, stack(0x000000319f300000,0x000000319f400000) (1024K)]
+  0x000001f856ed9f80 JavaThread "Atmosphere-Scheduler-22"    daemon [_thread_blocked, id=17824, stack(0x00000031a0200000,0x00000031a0300000) (1024K)]
+  0x000001f856ed6470 JavaThread "Atmosphere-Scheduler-23"    daemon [_thread_blocked, id=29108, stack(0x00000031a0300000,0x00000031a0400000) (1024K)]
+  0x000001f856ed7820 JavaThread "Atmosphere-Scheduler-24"    daemon [_thread_blocked, id=1264, stack(0x000000319b700000,0x000000319b800000) (1024K)]
+  0x000001f856ed98f0 JavaThread "Atmosphere-Shared-40"       daemon [_thread_blocked, id=5896, stack(0x000000319f500000,0x000000319f600000) (1024K)]
+  0x000001f8593c9960 JavaThread "Atmosphere-Scheduler-25"    daemon [_thread_blocked, id=5532, stack(0x000000319f600000,0x000000319f700000) (1024K)]
+  0x000001f8593c7890 JavaThread "Atmosphere-Scheduler-26"    daemon [_thread_blocked, id=8040, stack(0x000000319f700000,0x000000319f800000) (1024K)]
+  0x000001f8593ca680 JavaThread "HttpClient-4-Worker-2"      daemon [_thread_blocked, id=148, stack(0x000000319ef00000,0x000000319f000000) (1024K)]
+  0x000001f8593cc750 JavaThread "Atmosphere-Shared-41"       daemon [_thread_blocked, id=15288, stack(0x00000031a0400000,0x00000031a0500000) (1024K)]
+  0x000001f8593ce190 JavaThread "Atmosphere-Shared-42"       daemon [_thread_blocked, id=10804, stack(0x00000031a0700000,0x00000031a0800000) (1024K)]
+  0x000001f8593cfbd0 JavaThread "HttpClient-9-Worker-2"      daemon [_thread_blocked, id=28116, stack(0x00000031a0900000,0x00000031a0a00000) (1024K)]
+  0x000001f8593d0260 JavaThread "Atmosphere-Shared-43"       daemon [_thread_blocked, id=9992, stack(0x00000031a1100000,0x00000031a1200000) (1024K)]
+  0x000001f8593c5130 JavaThread "Atmosphere-Shared-44"       daemon [_thread_blocked, id=6972, stack(0x000000319a600000,0x000000319a700000) (1024K)]
+  0x000001f85be71f50 JavaThread "Atmosphere-Shared-45"       daemon [_thread_blocked, id=23104, stack(0x00000031a3a00000,0x00000031a3b00000) (1024K)]
+  0x000001f8593cba30 JavaThread "Atmosphere-Shared-46"       daemon [_thread_blocked, id=18912, stack(0x000000319cf00000,0x000000319d000000) (1024K)]
+  0x000001f8593c5e50 JavaThread "ForkJoinPool.commonPool-worker-13" daemon [_thread_blocked, id=27984, stack(0x000000319d300000,0x000000319d400000) (1024K)]
+  0x000001f8593d36e0 JavaThread "WebSocket background processing" daemon [_thread_blocked, id=18896, stack(0x000000319fa00000,0x000000319fb00000) (1024K)]
+  0x000001f8593d2330 JavaThread "Atmosphere-Shared-47"       daemon [_thread_blocked, id=9400, stack(0x00000031a0100000,0x00000031a0200000) (1024K)]
+  0x000001f85e9b2e10 JavaThread "C1 CompilerThread1"         daemon [_thread_in_native, id=15944, stack(0x000000319f100000,0x000000319f200000) (1024K)]
+  0x000001f85e9b2070 JavaThread "C1 CompilerThread2"         daemon [_thread_in_native, id=23380, stack(0x00000031a0500000,0x00000031a0600000) (1024K)]
+  0x000001f8593d08f0 JavaThread "Atmosphere-Shared-48"       daemon [_thread_blocked, id=22232, stack(0x000000319d000000,0x000000319d100000) (1024K)]
+  0x000001f8593ccde0 JavaThread "Atmosphere-Shared-49"       daemon [_thread_blocked, id=26276, stack(0x000000319a400000,0x000000319a500000) (1024K)]
+  0x000001f8593cdb00 JavaThread "Atmosphere-Shared-50"       daemon [_thread_blocked, id=3076, stack(0x000000319a500000,0x000000319a600000) (1024K)]
+  0x000001f8593d4400 JavaThread "Atmosphere-Shared-51"       daemon [_thread_blocked, id=10024, stack(0x00000031a1f00000,0x00000031a2000000) (1024K)]
+  0x000001f8593c8c40 JavaThread "Atmosphere-Shared-52"       daemon [_thread_blocked, id=14440, stack(0x000000319e100000,0x000000319e200000) (1024K)]
+Total: 95
+
+Other Threads:
+=>0x000001f84431a710 VMThread "VM Thread"                           [id=34612, stack(0x000000319ae00000,0x000000319af00000) (1024K)]
+  0x000001f84175cba0 WatcherThread "VM Periodic Task Thread"        [id=25732, stack(0x000000319ad00000,0x000000319ae00000) (1024K)]
+  0x000001f8303574c0 WorkerThread "GC Thread#0"                     [id=32972, stack(0x000000319a800000,0x000000319a900000) (1024K)]
+  0x000001f849bd3a60 WorkerThread "GC Thread#1"                     [id=11428, stack(0x000000319c100000,0x000000319c200000) (1024K)]
+  0x000001f849bd3e00 WorkerThread "GC Thread#2"                     [id=22704, stack(0x000000319c200000,0x000000319c300000) (1024K)]
+  0x000001f849be1fe0 WorkerThread "GC Thread#3"                     [id=18316, stack(0x000000319c300000,0x000000319c400000) (1024K)]
+  0x000001f849bf8f60 WorkerThread "GC Thread#4"                     [id=27124, stack(0x000000319c400000,0x000000319c500000) (1024K)]
+  0x000001f849bf9d20 WorkerThread "GC Thread#5"                     [id=8416, stack(0x000000319c500000,0x000000319c600000) (1024K)]
+  0x000001f849bfa0c0 WorkerThread "GC Thread#6"                     [id=9140, stack(0x000000319c600000,0x000000319c700000) (1024K)]
+  0x000001f849bfa870 WorkerThread "GC Thread#7"                     [id=35184, stack(0x000000319c700000,0x000000319c800000) (1024K)]
+  0x000001f849bfbc20 WorkerThread "GC Thread#8"                     [id=11672, stack(0x000000319c800000,0x000000319c900000) (1024K)]
+  0x000001f849bfcaf0 WorkerThread "GC Thread#9"                     [id=15628, stack(0x000000319c900000,0x000000319ca00000) (1024K)]
+  0x000001f8303684d0 ConcurrentGCThread "G1 Main Marker"            [id=24164, stack(0x000000319a900000,0x000000319aa00000) (1024K)]
+  0x000001f830368ed0 WorkerThread "G1 Conc#0"                       [id=31520, stack(0x000000319aa00000,0x000000319ab00000) (1024K)]
+  0x000001f849bfd970 WorkerThread "G1 Conc#1"                       [id=5432, stack(0x000000319cc00000,0x000000319cd00000) (1024K)]
+  0x000001f849bfd230 WorkerThread "G1 Conc#2"                       [id=24504, stack(0x000000319cd00000,0x000000319ce00000) (1024K)]
+  0x000001f8416a2f90 ConcurrentGCThread "G1 Refine#0"               [id=20144, stack(0x000000319ab00000,0x000000319ac00000) (1024K)]
+  0x000001f8416a3910 ConcurrentGCThread "G1 Service"                [id=17960, stack(0x000000319ac00000,0x000000319ad00000) (1024K)]
+Total: 18
+
+Threads with active compile tasks:
+C1 CompilerThread1   144683 12422       1       org.hotswap.agent.javassist.bytecode.Descriptor::toJavaName (9 bytes)
+C1 CompilerThread2   144683 12421       1       java.lang.invoke.InvokerBytecodeGenerator::emitIconstInsn (75 bytes)
+Total: 2
+
+VM state: at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ff9bc1e6948] Threads_lock - owner thread: 0x000001f84431a710
+[0x00007ff9bc1e6a48] Heap_lock - owner thread: 0x000001f8445b85f0
+
+Heap address: 0x0000000601000000, size: 8176 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) not mapped
+Compressed class space mapped at: 0x0000000800000000-0x0000000840000000, reserved size: 1073741824
+Narrow klass base: 0x0000000800000000, Narrow klass shift: 0, Narrow klass range: 0x40000000
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 4 size 8 Array Of Cards #cards 32 size 80 Howl #buckets 8 coarsen threshold 7372 Howl Bitmap #cards 1024 size 144 coarsen threshold 921 Card regions per heap region 1 cards per card region 8192
+ CPUs: 12 total, 12 available
+ Memory: 32694M
+ Large Page Support: Disabled
+ NUMA Support: Disabled
+ Compressed Oops: Enabled (Zero based)
+ Heap Region Size: 4M
+ Heap Min Capacity: 8M
+ Heap Initial Capacity: 512M
+ Heap Max Capacity: 8176M
+ Pre-touch: Disabled
+ Parallel Workers: 10
+ Concurrent Workers: 3
+ Concurrent Refinement Workers: 10
+ Periodic GC: Disabled
+
+Heap:
+ garbage-first heap   total 180224K, used 70940K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 7 young (28672K), 2 survivors (8192K)
+ Metaspace       used 127557K, committed 128896K, reserved 1179648K
+  class space    used 17124K, committed 17664K, reserved 1048576K
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, TAMS=top-at-mark-start, PB=parsable bottom
+|   0|0x0000000601000000, 0x0000000601400000, 0x0000000601400000|100%| O|  |TAMS 0x0000000601000000| PB 0x0000000601000000| Untracked 
+|   1|0x0000000601400000, 0x0000000601800000, 0x0000000601800000|100%| O|  |TAMS 0x0000000601400000| PB 0x0000000601400000| Untracked 
+|   2|0x0000000601800000, 0x0000000601c00000, 0x0000000601c00000|100%| O|  |TAMS 0x0000000601800000| PB 0x0000000601800000| Untracked 
+|   3|0x0000000601c00000, 0x0000000602000000, 0x0000000602000000|100%| O|  |TAMS 0x0000000601c00000| PB 0x0000000601c00000| Untracked 
+|   4|0x0000000602000000, 0x0000000602400000, 0x0000000602400000|100%| O|  |TAMS 0x0000000602000000| PB 0x0000000602000000| Untracked 
+|   5|0x0000000602400000, 0x0000000602800000, 0x0000000602800000|100%| O|  |TAMS 0x0000000602400000| PB 0x0000000602400000| Untracked 
+|   6|0x0000000602800000, 0x0000000602c00000, 0x0000000602c00000|100%| O|  |TAMS 0x0000000602800000| PB 0x0000000602800000| Untracked 
+|   7|0x0000000602c00000, 0x0000000603000000, 0x0000000603000000|100%| O|Cm|TAMS 0x0000000602c00000| PB 0x0000000602c00000| Complete 
+|   8|0x0000000603000000, 0x0000000603400000, 0x0000000603400000|100%| O|  |TAMS 0x0000000603000000| PB 0x0000000603000000| Untracked 
+|   9|0x0000000603400000, 0x0000000603800000, 0x0000000603800000|100%| O|  |TAMS 0x0000000603400000| PB 0x0000000603400000| Untracked 
+|  10|0x0000000603800000, 0x0000000603c00000, 0x0000000603c00000|100%| O|  |TAMS 0x0000000603800000| PB 0x0000000603800000| Untracked 
+|  11|0x0000000603c00000, 0x0000000603d51c38, 0x0000000604000000| 32%| O|  |TAMS 0x0000000603c00000| PB 0x0000000603c00000| Untracked 
+|  12|0x0000000604000000, 0x0000000604000000, 0x0000000604400000|  0%| F|  |TAMS 0x0000000604000000| PB 0x0000000604000000| Untracked 
+|  13|0x0000000604400000, 0x0000000604400000, 0x0000000604800000|  0%| F|  |TAMS 0x0000000604400000| PB 0x0000000604400000| Untracked 
+|  14|0x0000000604800000, 0x0000000604800000, 0x0000000604c00000|  0%| F|  |TAMS 0x0000000604800000| PB 0x0000000604800000| Untracked 
+|  15|0x0000000604c00000, 0x0000000604c00000, 0x0000000605000000|  0%| F|  |TAMS 0x0000000604c00000| PB 0x0000000604c00000| Untracked 
+|  16|0x0000000605000000, 0x0000000605000000, 0x0000000605400000|  0%| F|  |TAMS 0x0000000605000000| PB 0x0000000605000000| Untracked 
+|  17|0x0000000605400000, 0x0000000605400000, 0x0000000605800000|  0%| F|  |TAMS 0x0000000605400000| PB 0x0000000605400000| Untracked 
+|  18|0x0000000605800000, 0x0000000605800000, 0x0000000605c00000|  0%| F|  |TAMS 0x0000000605800000| PB 0x0000000605800000| Untracked 
+|  19|0x0000000605c00000, 0x0000000605c00000, 0x0000000606000000|  0%| F|  |TAMS 0x0000000605c00000| PB 0x0000000605c00000| Untracked 
+|  20|0x0000000606000000, 0x0000000606000000, 0x0000000606400000|  0%| F|  |TAMS 0x0000000606000000| PB 0x0000000606000000| Untracked 
+|  21|0x0000000606400000, 0x0000000606400000, 0x0000000606800000|  0%| F|  |TAMS 0x0000000606400000| PB 0x0000000606400000| Untracked 
+|  22|0x0000000606800000, 0x0000000606800000, 0x0000000606c00000|  0%| F|  |TAMS 0x0000000606800000| PB 0x0000000606800000| Untracked 
+|  23|0x0000000606c00000, 0x0000000606c00000, 0x0000000607000000|  0%| F|  |TAMS 0x0000000606c00000| PB 0x0000000606c00000| Untracked 
+|  24|0x0000000607000000, 0x0000000607000000, 0x0000000607400000|  0%| F|  |TAMS 0x0000000607000000| PB 0x0000000607000000| Untracked 
+|  25|0x0000000607400000, 0x0000000607400000, 0x0000000607800000|  0%| F|  |TAMS 0x0000000607400000| PB 0x0000000607400000| Untracked 
+|  26|0x0000000607800000, 0x0000000607800000, 0x0000000607c00000|  0%| F|  |TAMS 0x0000000607800000| PB 0x0000000607800000| Untracked 
+|  27|0x0000000607c00000, 0x0000000607c00000, 0x0000000608000000|  0%| F|  |TAMS 0x0000000607c00000| PB 0x0000000607c00000| Untracked 
+|  28|0x0000000608000000, 0x0000000608000000, 0x0000000608400000|  0%| F|  |TAMS 0x0000000608000000| PB 0x0000000608000000| Untracked 
+|  29|0x0000000608400000, 0x0000000608400000, 0x0000000608800000|  0%| F|  |TAMS 0x0000000608400000| PB 0x0000000608400000| Untracked 
+|  30|0x0000000608800000, 0x0000000608800000, 0x0000000608c00000|  0%| F|  |TAMS 0x0000000608800000| PB 0x0000000608800000| Untracked 
+|  31|0x0000000608c00000, 0x0000000608c00000, 0x0000000609000000|  0%| F|  |TAMS 0x0000000608c00000| PB 0x0000000608c00000| Untracked 
+|  32|0x0000000609000000, 0x0000000609000000, 0x0000000609400000|  0%| F|  |TAMS 0x0000000609000000| PB 0x0000000609000000| Untracked 
+|  33|0x0000000609400000, 0x0000000609400000, 0x0000000609800000|  0%| F|  |TAMS 0x0000000609400000| PB 0x0000000609400000| Untracked 
+|  34|0x0000000609800000, 0x0000000609bf5400, 0x0000000609c00000| 98%| S|CS|TAMS 0x0000000609800000| PB 0x0000000609800000| Complete 
+|  35|0x0000000609c00000, 0x000000060a000000, 0x000000060a000000|100%| S|CS|TAMS 0x0000000609c00000| PB 0x0000000609c00000| Complete 
+|  36|0x000000060a000000, 0x000000060a000000, 0x000000060a400000|  0%| F|  |TAMS 0x000000060a000000| PB 0x000000060a000000| Untracked 
+|  37|0x000000060a400000, 0x000000060a400000, 0x000000060a800000|  0%| F|  |TAMS 0x000000060a400000| PB 0x000000060a400000| Untracked 
+|  38|0x000000060a800000, 0x000000060a800000, 0x000000060ac00000|  0%| F|  |TAMS 0x000000060a800000| PB 0x000000060a800000| Untracked 
+|  39|0x000000060ac00000, 0x000000060adec098, 0x000000060b000000| 48%| E|  |TAMS 0x000000060ac00000| PB 0x000000060ac00000| Complete 
+|  40|0x000000060b000000, 0x000000060b400000, 0x000000060b400000|100%| E|CS|TAMS 0x000000060b000000| PB 0x000000060b000000| Complete 
+|  41|0x000000060b400000, 0x000000060b800000, 0x000000060b800000|100%| E|CS|TAMS 0x000000060b400000| PB 0x000000060b400000| Complete 
+|  42|0x000000060b800000, 0x000000060bc00000, 0x000000060bc00000|100%| E|CS|TAMS 0x000000060b800000| PB 0x000000060b800000| Complete 
+| 127|0x0000000620c00000, 0x0000000621000000, 0x0000000621000000|100%| E|CS|TAMS 0x0000000620c00000| PB 0x0000000620c00000| Complete 
+
+Card table byte_map: [0x000001f838620000,0x000001f839620000] _byte_map_base: 0x000001f835618000
+
+Marking Bits: (CMBitMap*) 0x000001f830357ac0
+ Bits: [0x000001f839620000, 0x000001f8415e0000)
+
+Polling page: 0x000001f82fa90000
+
+Metaspace:
+
+Usage:
+  Non-class:    107.85 MB used.
+      Class:     16.72 MB used.
+       Both:    124.57 MB used.
+
+Virtual space:
+  Non-class space:      128.00 MB reserved,     108.62 MB ( 85%) committed,  2 nodes.
+      Class space:        1.00 GB reserved,      17.25 MB (  2%) committed,  1 nodes.
+             Both:        1.12 GB reserved,     125.88 MB ( 11%) committed. 
+
+Chunk freelists:
+   Non-Class:  3.19 MB
+       Class:  14.91 MB
+        Both:  18.09 MB
+
+MaxMetaspaceSize: unlimited
+CompressedClassSpaceSize: 1.00 GB
+Initial GC threshold: 21.00 MB
+Current GC threshold: 209.69 MB
+CDS: off
+ - commit_granule_bytes: 65536.
+ - commit_granule_words: 8192.
+ - virtual_space_node_default_size: 8388608.
+ - enlarge_chunks_in_place: 1.
+ - use_allocation_guard: 0.
+
+
+Internal statistics:
+
+num_allocs_failed_limit: 12.
+num_arena_births: 1464.
+num_arena_deaths: 468.
+num_vsnodes_births: 3.
+num_vsnodes_deaths: 0.
+num_space_committed: 2011.
+num_space_uncommitted: 0.
+num_chunks_returned_to_freelist: 560.
+num_chunks_taken_from_freelist: 5604.
+num_chunk_merges: 176.
+num_chunk_splits: 4039.
+num_chunks_enlarged: 3178.
+num_inconsistent_stats: 0.
+
+CodeCache: size=49152Kb used=20876Kb max_used=22526Kb free=28275Kb
+ bounds [0x000001f8341e0000, 0x000001f835850000, 0x000001f8371e0000]
+ total_blobs=10781 nmethods=9957 adapters=744
+ compilation: enabled
+              stopped_count=0, restarted_count=0
+ full_count=0
+
+Compilation events (20 events):
+Event: 143.193 Thread 0x000001f85e9b34e0 nmethod 12405 0x000001f834b76210 code [0x000001f834b76460, 0x000001f834b76cf8]
+Event: 143.193 Thread 0x000001f84438aa10 nmethod 12410 0x000001f83451f810 code [0x000001f83451fa00, 0x000001f83451fd70]
+Event: 143.193 Thread 0x000001f85e9b2e10 nmethod 12411 0x000001f8347eda90 code [0x000001f8347edca0, 0x000001f8347ee248]
+Event: 143.193 Thread 0x000001f85e9b2070 nmethod 12412 0x000001f8343ece10 code [0x000001f8343ed080, 0x000001f8343ed628]
+Event: 143.193 Thread 0x000001f85e9b2070 12413       1       java.net.http.HttpHeaders::headersOf (72 bytes)
+Event: 143.193 Thread 0x000001f84438aa10 12414       1       java.net.URI::getPort (5 bytes)
+Event: 143.194 Thread 0x000001f84438aa10 nmethod 12414 0x000001f834ade690 code [0x000001f834ade820, 0x000001f834ade8e8]
+Event: 143.194 Thread 0x000001f85e9b2070 nmethod 12413 0x000001f8348a8010 code [0x000001f8348a8220, 0x000001f8348a8a78]
+Event: 143.194 Thread 0x000001f85e9b2070 12415       1       jdk.internal.net.http.frame.Http2Frame::getFlag (15 bytes)
+Event: 143.194 Thread 0x000001f85e9b2070 nmethod 12415 0x000001f834b20910 code [0x000001f834b20aa0, 0x000001f834b20b80]
+Event: 143.410 Thread 0x000001f85e9b2070 12416       1       org.atmosphere.util.uri.UriPattern::<init> (35 bytes)
+Event: 143.410 Thread 0x000001f85e9b2070 nmethod 12416 0x000001f834e4d910 code [0x000001f834e4dac0, 0x000001f834e4dd70]
+Event: 143.570 Thread 0x000001f85e9b34e0 12418       1       org.springframework.boot.devtools.filewatch.DirectorySnapshot::equals (46 bytes)
+Event: 143.570 Thread 0x000001f85e9b2070 12417       1       org.springframework.boot.devtools.filewatch.FileSystemWatcher$Watcher::isDifferent (105 bytes)
+Event: 143.570 Thread 0x000001f84438aa10 12419       1       java.util.Collections$UnmodifiableSet::equals (24 bytes)
+Event: 143.570 Thread 0x000001f84438aa10 nmethod 12419 0x000001f834995390 code [0x000001f834995520, 0x000001f834995650]
+Event: 143.570 Thread 0x000001f85e9b34e0 nmethod 12418 0x000001f834954210 code [0x000001f8349543e0, 0x000001f8349546b8]
+Event: 143.570 Thread 0x000001f85e9b2070 nmethod 12417 0x000001f834562990 code [0x000001f834562be0, 0x000001f834563058]
+Event: 144.343 Thread 0x000001f85e9b2070 12420       1       sun.nio.fs.AbstractWatchKey$Event::kind (5 bytes)
+Event: 144.343 Thread 0x000001f85e9b2070 nmethod 12420 0x000001f834b43190 code [0x000001f834b43320, 0x000001f834b433f0]
+
+GC Heap History (20 events):
+Event: 21.239 GC heap before
+{Heap before GC invocations=50 (full 0):
+ garbage-first heap   total 196608K, used 150556K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 28 young (114688K), 2 survivors (8192K)
+ Metaspace       used 112749K, committed 113600K, reserved 1179648K
+  class space    used 14978K, committed 15360K, reserved 1048576K
+}
+Event: 21.241 GC heap after
+{Heap after GC invocations=51 (full 0):
+ garbage-first heap   total 196608K, used 48175K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 2 young (8192K), 2 survivors (8192K)
+ Metaspace       used 112749K, committed 113600K, reserved 1179648K
+  class space    used 14978K, committed 15360K, reserved 1048576K
+}
+Event: 46.234 GC heap before
+{Heap before GC invocations=51 (full 0):
+ garbage-first heap   total 196608K, used 154671K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 28 young (114688K), 2 survivors (8192K)
+ Metaspace       used 115760K, committed 116672K, reserved 1179648K
+  class space    used 15443K, committed 15872K, reserved 1048576K
+}
+Event: 46.236 GC heap after
+{Heap after GC invocations=52 (full 0):
+ garbage-first heap   total 196608K, used 48618K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 2 young (8192K), 2 survivors (8192K)
+ Metaspace       used 115760K, committed 116672K, reserved 1179648K
+  class space    used 15443K, committed 15872K, reserved 1048576K
+}
+Event: 47.024 GC heap before
+{Heap before GC invocations=52 (full 0):
+ garbage-first heap   total 196608K, used 142826K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 27 young (110592K), 2 survivors (8192K)
+ Metaspace       used 118218K, committed 119104K, reserved 1179648K
+  class space    used 15861K, committed 16256K, reserved 1048576K
+}
+Event: 47.027 GC heap after
+{Heap after GC invocations=53 (full 0):
+ garbage-first heap   total 196608K, used 51265K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 2 young (8192K), 2 survivors (8192K)
+ Metaspace       used 118218K, committed 119104K, reserved 1179648K
+  class space    used 15861K, committed 16256K, reserved 1048576K
+}
+Event: 47.347 GC heap before
+{Heap before GC invocations=54 (full 0):
+ garbage-first heap   total 180224K, used 145473K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 26 young (106496K), 2 survivors (8192K)
+ Metaspace       used 118534K, committed 119424K, reserved 1179648K
+  class space    used 15933K, committed 16384K, reserved 1048576K
+}
+Event: 47.350 GC heap after
+{Heap after GC invocations=55 (full 0):
+ garbage-first heap   total 180224K, used 52874K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 3 young (12288K), 3 survivors (12288K)
+ Metaspace       used 118534K, committed 119424K, reserved 1179648K
+  class space    used 15933K, committed 16384K, reserved 1048576K
+}
+Event: 52.098 GC heap before
+{Heap before GC invocations=55 (full 0):
+ garbage-first heap   total 180224K, used 142986K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 26 young (106496K), 3 survivors (12288K)
+ Metaspace       used 121468K, committed 122432K, reserved 1179648K
+  class space    used 16385K, committed 16832K, reserved 1048576K
+}
+Event: 52.102 GC heap after
+{Heap after GC invocations=56 (full 0):
+ garbage-first heap   total 180224K, used 53191K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 3 young (12288K), 3 survivors (12288K)
+ Metaspace       used 121468K, committed 122432K, reserved 1179648K
+  class space    used 16385K, committed 16832K, reserved 1048576K
+}
+Event: 54.717 GC heap before
+{Heap before GC invocations=56 (full 0):
+ garbage-first heap   total 180224K, used 143303K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 26 young (106496K), 3 survivors (12288K)
+ Metaspace       used 122846K, committed 123776K, reserved 1179648K
+  class space    used 16591K, committed 17024K, reserved 1048576K
+}
+Event: 54.721 GC heap after
+{Heap after GC invocations=57 (full 0):
+ garbage-first heap   total 180224K, used 53730K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 3 young (12288K), 3 survivors (12288K)
+ Metaspace       used 122846K, committed 123776K, reserved 1179648K
+  class space    used 16591K, committed 17024K, reserved 1048576K
+}
+Event: 55.754 GC heap before
+{Heap before GC invocations=57 (full 0):
+ garbage-first heap   total 180224K, used 143842K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 26 young (106496K), 3 survivors (12288K)
+ Metaspace       used 126352K, committed 127360K, reserved 1179648K
+  class space    used 17006K, committed 17472K, reserved 1048576K
+}
+Event: 55.757 GC heap after
+{Heap after GC invocations=58 (full 0):
+ garbage-first heap   total 180224K, used 53781K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 3 young (12288K), 3 survivors (12288K)
+ Metaspace       used 126352K, committed 127360K, reserved 1179648K
+  class space    used 17006K, committed 17472K, reserved 1048576K
+}
+Event: 56.822 GC heap before
+{Heap before GC invocations=58 (full 0):
+ garbage-first heap   total 180224K, used 143893K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 26 young (106496K), 3 survivors (12288K)
+ Metaspace       used 126401K, committed 127424K, reserved 1179648K
+  class space    used 17012K, committed 17472K, reserved 1048576K
+}
+Event: 56.825 GC heap after
+{Heap after GC invocations=59 (full 0):
+ garbage-first heap   total 180224K, used 54077K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 3 young (12288K), 3 survivors (12288K)
+ Metaspace       used 126401K, committed 127424K, reserved 1179648K
+  class space    used 17012K, committed 17472K, reserved 1048576K
+}
+Event: 133.003 GC heap before
+{Heap before GC invocations=59 (full 0):
+ garbage-first heap   total 180224K, used 144189K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 26 young (106496K), 3 survivors (12288K)
+ Metaspace       used 127321K, committed 128320K, reserved 1179648K
+  class space    used 17137K, committed 17600K, reserved 1048576K
+}
+Event: 133.006 GC heap after
+{Heap after GC invocations=60 (full 0):
+ garbage-first heap   total 180224K, used 55110K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 3 young (12288K), 3 survivors (12288K)
+ Metaspace       used 127321K, committed 128320K, reserved 1179648K
+  class space    used 17137K, committed 17600K, reserved 1048576K
+}
+Event: 143.050 GC heap before
+{Heap before GC invocations=60 (full 0):
+ garbage-first heap   total 180224K, used 83782K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 11 young (45056K), 3 survivors (12288K)
+ Metaspace       used 127820K, committed 128832K, reserved 1179648K
+  class space    used 17204K, committed 17664K, reserved 1048576K
+}
+Event: 143.054 GC heap after
+{Heap after GC invocations=61 (full 0):
+ garbage-first heap   total 180224K, used 54556K [0x0000000601000000, 0x0000000800000000)
+  region size 4096K, 2 young (8192K), 2 survivors (8192K)
+ Metaspace       used 127820K, committed 128832K, reserved 1179648K
+  class space    used 17204K, committed 17664K, reserved 1048576K
+}
+
+Dll operation events (3 events):
+Event: 0.007 Loaded shared library C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\java.dll
+Event: 0.008 Loaded shared library C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\zip.dll
+Event: 11.393 Loaded shared library C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\verify.dll
+
+Deoptimization events (20 events):
+Event: 143.323 Thread 0x000001f849bccf00 DEOPT PACKING pc=0x000001f8348616f4 sp=0x000000319bffeae0
+Event: 143.323 Thread 0x000001f849bccf00 DEOPT UNPACKING pc=0x000001f834234e42 sp=0x000000319bffe070 mode 1
+Event: 143.378 Thread 0x000001f8593c9ff0 DEOPT PACKING pc=0x000001f834860d0c sp=0x000000319a5ff260
+Event: 143.378 Thread 0x000001f8593c9ff0 DEOPT UNPACKING pc=0x000001f834234e42 sp=0x000000319a5fe730 mode 1
+Event: 143.378 Thread 0x000001f8593c9ff0 DEOPT PACKING pc=0x000001f8348616f4 sp=0x000000319a5ff300
+Event: 143.378 Thread 0x000001f8593c9ff0 DEOPT UNPACKING pc=0x000001f834234e42 sp=0x000000319a5fe890 mode 1
+Event: 144.542 Thread 0x000001f8445b85f0 DEOPT PACKING pc=0x000001f834f5e2f4 sp=0x000000319bafd9b0
+Event: 144.542 Thread 0x000001f8445b85f0 DEOPT UNPACKING pc=0x000001f834234e42 sp=0x000000319bafcf18 mode 1
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT PACKING pc=0x000001f834f5e2f4 sp=0x000000319bafd9b0
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT UNPACKING pc=0x000001f834234e42 sp=0x000000319bafcf18 mode 1
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT PACKING pc=0x000001f834a6d434 sp=0x000000319bafd9b0
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT UNPACKING pc=0x000001f834234e42 sp=0x000000319bafcf28 mode 1
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT PACKING pc=0x000001f834f5e2f4 sp=0x000000319bafd9b0
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT UNPACKING pc=0x000001f834234e42 sp=0x000000319bafcf18 mode 1
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT PACKING pc=0x000001f834a6d434 sp=0x000000319bafd9b0
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT UNPACKING pc=0x000001f834234e42 sp=0x000000319bafcf28 mode 1
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT PACKING pc=0x000001f834f5e2f4 sp=0x000000319bafd9b0
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT UNPACKING pc=0x000001f834234e42 sp=0x000000319bafcf18 mode 1
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT PACKING pc=0x000001f834f5e2f4 sp=0x000000319bafd9b0
+Event: 144.543 Thread 0x000001f8445b85f0 DEOPT UNPACKING pc=0x000001f834234e42 sp=0x000000319bafcf18 mode 1
+
+Classes loaded (20 events):
+Event: 144.539 Loading class org/hotswap/agent/util/signature/ClassSignatureBase
+Event: 144.539 Loading class org/hotswap/agent/util/signature/ClassSignatureBase done
+Event: 144.540 Loading class org/hotswap/agent/javassist/bytecode/annotation/AnnotationImpl
+Event: 144.540 Loading class org/hotswap/agent/javassist/bytecode/annotation/AnnotationImpl done
+Event: 144.540 Loading class org/hotswap/agent/util/signature/ClassSignatureBase$ToStringComparator
+Event: 144.540 Loading class org/hotswap/agent/util/signature/ClassSignatureBase$ToStringComparator done
+Event: 144.541 Loading class org/hotswap/agent/javassist/bytecode/SignatureAttribute$Cursor
+Event: 144.541 Loading class org/hotswap/agent/javassist/bytecode/SignatureAttribute$Cursor done
+Event: 144.541 Loading class org/hotswap/agent/javassist/bytecode/SignatureAttribute$NestedClassType
+Event: 144.541 Loading class org/hotswap/agent/javassist/bytecode/SignatureAttribute$NestedClassType done
+Event: 144.542 Loading class org/hotswap/agent/util/signature/JavaClassSignature
+Event: 144.542 Loading class org/hotswap/agent/util/signature/JavaClassSignature done
+Event: 144.543 Loading class java/util/stream/DoubleStream
+Event: 144.543 Loading class java/util/stream/DoubleStream done
+Event: 144.543 Loading class java/util/function/DoubleBinaryOperator
+Event: 144.543 Loading class java/util/function/DoubleBinaryOperator done
+Event: 144.543 Loading class java/util/function/IntToDoubleFunction
+Event: 144.543 Loading class java/util/function/IntToDoubleFunction done
+Event: 144.543 Loading class java/util/function/IntToLongFunction
+Event: 144.543 Loading class java/util/function/IntToLongFunction done
+
+Classes unloaded (20 events):
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x00000008001c3400 'java/lang/invoke/LambdaForm$MH+0x00000008001c3400'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x000000080015bc00 'java/lang/invoke/LambdaForm$MH+0x000000080015bc00'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x000000080015b800 'java/lang/invoke/LambdaForm$MH+0x000000080015b800'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x000000080015b000 'java/lang/invoke/LambdaForm$MH+0x000000080015b000'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x0000000800159800 'java/lang/invoke/LambdaForm$MH+0x0000000800159800'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x0000000800159400 'java/lang/invoke/LambdaForm$MH+0x0000000800159400'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x0000000800159000 'java/lang/invoke/LambdaForm$MH+0x0000000800159000'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x0000000800158c00 'java/lang/invoke/LambdaForm$MH+0x0000000800158c00'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x0000000800141000 'java/lang/invoke/LambdaForm$MH+0x0000000800141000'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x0000000800140c00 'java/lang/invoke/LambdaForm$MH+0x0000000800140c00'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x0000000800140800 'java/lang/invoke/LambdaForm$MH+0x0000000800140800'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x0000000800140400 'java/lang/invoke/LambdaForm$MH+0x0000000800140400'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x00000008000d1800 'java/lang/invoke/LambdaForm$MH+0x00000008000d1800'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x00000008000d0c00 'java/lang/invoke/LambdaForm$MH+0x00000008000d0c00'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x00000008000d0000 'java/lang/invoke/LambdaForm$MH+0x00000008000d0000'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x00000008000cfc00 'java/lang/invoke/LambdaForm$MH+0x00000008000cfc00'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x00000008000cf800 'java/lang/invoke/LambdaForm$MH+0x00000008000cf800'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x00000008000cec00 'java/lang/invoke/LambdaForm$MH+0x00000008000cec00'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x00000008000cd000 'java/lang/invoke/LambdaForm$MH+0x00000008000cd000'
+Event: 143.078 Thread 0x000001f84431a710 Unloading class 0x00000008000cc400 'java/lang/invoke/LambdaForm$MH+0x00000008000cc400'
+
+Classes redefined (1 events):
+Event: 144.546 Thread 0x000001f84431a710 redefined class name=com.arrelin.front.views.MainLayout, count=1
+
+Internal exceptions (20 events):
+Event: 142.555 Thread 0x000001f84c91f4c0 Exception <a 'java/lang/NoSuchMethodError'{0x000000060b20ed50}: 'java.lang.Object java.lang.invoke.Invokers$Holder.linkToTargetMethod(java.lang.Object, java.lang.Object, java.lang.Object, int, java.lang.Object, java.lang.Object)'> (0x000000060b20ed50) 
+thrown [s\src\hotspot\share\interpreter\linkResolver.cpp, line 784]
+Event: 142.656 Thread 0x000001f84c712680 Exception <a 'java/io/IOException'{0x000000060a778c18}> (0x000000060a778c18) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.322 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8d9b10}> (0x000000060b8d9b10) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8db8a0}> (0x000000060b8db8a0) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8dbd30}> (0x000000060b8dbd30) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8dc350}> (0x000000060b8dc350) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8dc780}> (0x000000060b8dc780) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8dcb98}> (0x000000060b8dcb98) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8dd1d8}> (0x000000060b8dd1d8) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8dd5e8}> (0x000000060b8dd5e8) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8dda30}> (0x000000060b8dda30) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8de058}> (0x000000060b8de058) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8de4b8}> (0x000000060b8de4b8) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8deb20}> (0x000000060b8deb20) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8def40}> (0x000000060b8def40) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8df498}> (0x000000060b8df498) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8dfa70}> (0x000000060b8dfa70) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.323 Thread 0x000001f849bccf00 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8dfe88}> (0x000000060b8dfe88) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 143.378 Thread 0x000001f8593c9ff0 Exception <a 'sun/nio/fs/WindowsException'{0x000000060b8ec5f0}> (0x000000060b8ec5f0) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 535]
+Event: 144.532 Thread 0x000001f8445b85f0 Exception <a 'java/lang/ClassCastException'{0x000000060ac6a458}: class java.io.ObjectStreamClass$Caches$1 cannot be cast to class java.util.Map (java.io.ObjectStreamClass$Caches$1 and java.util.Map are in module java.base of loader 'bootstrap')> (0x000000060ac6a458) 
+thrown [s\src\hotspot\share\interpreter\interpreterRuntime.cpp, line 455]
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (20 events):
+Event: 121.237 Executing VM operation: Cleanup done
+Event: 132.243 Executing VM operation: Cleanup
+Event: 132.243 Executing VM operation: Cleanup done
+Event: 133.003 Executing VM operation: G1CollectForAllocation (G1 Evacuation Pause)
+Event: 133.006 Executing VM operation: G1CollectForAllocation (G1 Evacuation Pause) done
+Event: 142.573 Executing VM operation: HandshakeAllThreads (Deoptimize)
+Event: 142.573 Executing VM operation: HandshakeAllThreads (Deoptimize) done
+Event: 142.573 Executing VM operation: Cleanup
+Event: 142.573 Executing VM operation: Cleanup done
+Event: 143.050 Executing VM operation: G1TryInitiateConcMark (CodeCache GC Threshold)
+Event: 143.054 Executing VM operation: G1TryInitiateConcMark (CodeCache GC Threshold) done
+Event: 143.077 Executing VM operation: G1PauseRemark
+Event: 143.087 Executing VM operation: G1PauseRemark done
+Event: 143.096 Executing VM operation: G1PauseCleanup
+Event: 143.096 Executing VM operation: G1PauseCleanup done
+Event: 144.096 Executing VM operation: Cleanup
+Event: 144.096 Executing VM operation: Cleanup done
+Event: 144.537 Executing VM operation: HandshakeAllThreads (Deoptimize)
+Event: 144.537 Executing VM operation: HandshakeAllThreads (Deoptimize) done
+Event: 144.546 Executing VM operation: RedefineClasses (Heap Inspection Initiated GC)
+
+Memory protections (0 events):
+No events
+
+Nmethod flushes (20 events):
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834d87b10
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834d88c90
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834dc5490
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834dc5a10
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834dc5f90
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834e13990
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f0a810
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f0ae10
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f0b110
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f0b410
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f0b710
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f0cb10
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f0d490
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f0da10
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f10110
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f10990
+Event: 143.085 Thread 0x000001f84431a710 flushing osr nmethod 0x000001f834f71c10
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834f72610
+Event: 143.085 Thread 0x000001f84431a710 flushing osr nmethod 0x000001f834f99f90
+Event: 143.085 Thread 0x000001f84431a710 flushing  nmethod 0x000001f834fce690
+
+Events (20 events):
+Event: 143.689 Thread 0x000001f8593c85b0 Thread exited: 0x000001f8593c85b0
+Event: 143.689 Thread 0x000001f8593c7f20 Thread exited: 0x000001f8593c7f20
+Event: 144.291 Thread 0x000001f849bce4c0 Thread added: 0x000001f8593c7200
+Event: 144.292 Thread 0x000001f85be725e0 Thread added: 0x000001f8593c8c40
+Event: 144.292 Thread 0x000001f8593c7200 Thread exited: 0x000001f8593c7200
+Event: 144.343 Thread 0x000001f85e9b34e0 Thread exited: 0x000001f85e9b34e0
+Event: 144.392 Thread 0x000001f849bce4c0 Thread added: 0x000001f8593c7200
+Event: 144.392 Thread 0x000001f849bce4c0 Thread added: 0x000001f8593ce820
+Event: 144.392 Thread 0x000001f849bce4c0 Thread added: 0x000001f8593c7f20
+Event: 144.392 Thread 0x000001f8593c7f20 Thread exited: 0x000001f8593c7f20
+Event: 144.393 Thread 0x000001f8593c7200 Thread exited: 0x000001f8593c7200
+Event: 144.393 Thread 0x000001f8593ce820 Thread exited: 0x000001f8593ce820
+Event: 144.493 Thread 0x000001f849bce4c0 Thread added: 0x000001f8593c7200
+Event: 144.493 Thread 0x000001f849bce4c0 Thread added: 0x000001f8593c7f20
+Event: 144.493 Thread 0x000001f849bce4c0 Thread added: 0x000001f8593ce820
+Event: 144.493 Thread 0x000001f849bce4c0 Thread added: 0x000001f8593c85b0
+Event: 144.493 Thread 0x000001f8593ce820 Thread exited: 0x000001f8593ce820
+Event: 144.493 Thread 0x000001f8593c85b0 Thread exited: 0x000001f8593c85b0
+Event: 144.494 Thread 0x000001f8593c7200 Thread exited: 0x000001f8593c7200
+Event: 144.494 Thread 0x000001f8593c7f20 Thread exited: 0x000001f8593c7f20
+
+
+Dynamic libraries:
+0x00007ff7bcf70000 - 0x00007ff7bcf7a000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\java.exe
+0x00007ffa76a00000 - 0x00007ffa76c09000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffa75090000 - 0x00007ffa7514d000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffa73e90000 - 0x00007ffa74214000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffa74580000 - 0x00007ffa74691000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffa683a0000 - 0x00007ffa683bb000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\VCRUNTIME140.dll
+0x00007ffa4bb20000 - 0x00007ffa4bb38000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\jli.dll
+0x00007ffa759f0000 - 0x00007ffa75b9d000 	C:\Windows\System32\USER32.dll
+0x00007ffa5a740000 - 0x00007ffa5a9e5000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22000.120_none_9d947278b86cc467\COMCTL32.dll
+0x00007ffa74430000 - 0x00007ffa74456000 	C:\Windows\System32\win32u.dll
+0x00007ffa74fe0000 - 0x00007ffa75083000 	C:\Windows\System32\msvcrt.dll
+0x00007ffa76990000 - 0x00007ffa769ba000 	C:\Windows\System32\GDI32.dll
+0x00007ffa74460000 - 0x00007ffa7457e000 	C:\Windows\System32\gdi32full.dll
+0x00007ffa74390000 - 0x00007ffa7442d000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffa76240000 - 0x00007ffa76271000 	C:\Windows\System32\IMM32.DLL
+0x00007ffa68390000 - 0x00007ffa6839c000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\vcruntime140_1.dll
+0x00007ff9f27b0000 - 0x00007ff9f283d000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\msvcp140.dll
+0x00007ff9bb520000 - 0x00007ff9bc2d7000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\server\jvm.dll
+0x00007ffa76030000 - 0x00007ffa760de000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffa74bf0000 - 0x00007ffa74c8e000 	C:\Windows\System32\sechost.dll
+0x00007ffa74eb0000 - 0x00007ffa74fd1000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffa761d0000 - 0x00007ffa7623f000 	C:\Windows\System32\WS2_32.dll
+0x00007ffa73630000 - 0x00007ffa7367d000 	C:\Windows\SYSTEM32\POWRPROF.dll
+0x00007ffa68f80000 - 0x00007ffa68fb3000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffa693c0000 - 0x00007ffa693ca000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffa734b0000 - 0x00007ffa734c3000 	C:\Windows\SYSTEM32\UMPDC.dll
+0x00007ffa72ec0000 - 0x00007ffa72ed8000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ffa68380000 - 0x00007ffa6838a000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\jimage.dll
+0x00007ffa6abf0000 - 0x00007ffa6ae11000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffa68700000 - 0x00007ffa68731000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ffa747d0000 - 0x00007ffa7484f000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffa543c0000 - 0x00007ffa543fc000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\jdwp.dll
+0x00007ffa68370000 - 0x00007ffa6837e000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\instrument.dll
+0x00007ffa529a0000 - 0x00007ffa529bf000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\java.dll
+0x00007ffa42600000 - 0x00007ffa42618000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\zip.dll
+0x00007ffa75150000 - 0x00007ffa75915000 	C:\Windows\System32\SHELL32.dll
+0x00007ffa71f20000 - 0x00007ffa72782000 	C:\Windows\SYSTEM32\windows.storage.dll
+0x00007ffa76530000 - 0x00007ffa768a6000 	C:\Windows\System32\combase.dll
+0x00007ffa71db0000 - 0x00007ffa71f17000 	C:\Windows\SYSTEM32\wintypes.dll
+0x00007ffa760e0000 - 0x00007ffa761ca000 	C:\Windows\System32\SHCORE.dll
+0x00007ffa74c90000 - 0x00007ffa74ced000 	C:\Windows\System32\shlwapi.dll
+0x00007ffa73dc0000 - 0x00007ffa73de5000 	C:\Windows\SYSTEM32\profapi.dll
+0x00007ffa4fe60000 - 0x00007ffa4fe6b000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\dt_socket.dll
+0x00007ffa729e0000 - 0x00007ffa72a0d000 	C:\Windows\SYSTEM32\IPHLPAPI.DLL
+0x00007ffa733d0000 - 0x00007ffa73437000 	C:\Windows\system32\mswsock.dll
+0x00007ffa68360000 - 0x00007ffa68370000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\net.dll
+0x00007ffa6e7f0000 - 0x00007ffa6e904000 	C:\Windows\SYSTEM32\WINHTTP.dll
+0x00007ffa425e0000 - 0x00007ffa425f6000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\nio.dll
+0x00007ffa72a10000 - 0x00007ffa72af7000 	C:\Windows\SYSTEM32\DNSAPI.dll
+0x00007ffa75940000 - 0x00007ffa75949000 	C:\Windows\System32\NSI.dll
+0x00007ffa6bd40000 - 0x00007ffa6bd4a000 	C:\Windows\System32\rasadhlp.dll
+0x00007ffa6d770000 - 0x00007ffa6d7f1000 	C:\Windows\System32\fwpuclnt.dll
+0x00007ffa58700000 - 0x00007ffa58709000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\management.dll
+0x00007ffa57140000 - 0x00007ffa5714b000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\management_ext.dll
+0x00007ffa74be0000 - 0x00007ffa74be8000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffa73720000 - 0x00007ffa73738000 	C:\Windows\SYSTEM32\CRYPTSP.dll
+0x00007ffa72e20000 - 0x00007ffa72e55000 	C:\Windows\system32\rsaenh.dll
+0x00007ffa73480000 - 0x00007ffa734ac000 	C:\Windows\SYSTEM32\USERENV.dll
+0x00007ffa73860000 - 0x00007ffa73887000 	C:\Windows\SYSTEM32\bcrypt.dll
+0x00007ffa735f0000 - 0x00007ffa735fc000 	C:\Windows\SYSTEM32\CRYPTBASE.dll
+0x00007ffa596d0000 - 0x00007ffa596e7000 	C:\Windows\system32\napinsp.dll
+0x00007ffa55280000 - 0x00007ffa5529b000 	C:\Windows\system32\pnrpnsp.dll
+0x00007ffa550a0000 - 0x00007ffa550b2000 	C:\Windows\System32\winrnr.dll
+0x00007ffa6db70000 - 0x00007ffa6db85000 	C:\Windows\system32\wshbth.dll
+0x00007ffa34390000 - 0x00007ffa343af000 	C:\Windows\system32\nlansp_c.dll
+0x00007ffa43760000 - 0x00007ffa43769000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\extnet.dll
+0x00007ffa4bb10000 - 0x00007ffa4bb1e000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\sunmscapi.dll
+0x00007ffa74220000 - 0x00007ffa74382000 	C:\Windows\System32\CRYPT32.dll
+0x00007ffa73830000 - 0x00007ffa73858000 	C:\Windows\SYSTEM32\ncrypt.dll
+0x00007ffa737f0000 - 0x00007ffa73827000 	C:\Windows\SYSTEM32\NTASN1.dll
+0x00007ffa52990000 - 0x00007ffa529a0000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\verify.dll
+0x00007ffa4e3e0000 - 0x00007ffa4e425000 	C:\Users\morgu\AppData\Local\Temp\jna-104083454\jna16956391618845149729.dll
+0x00007ffa76380000 - 0x00007ffa7651a000 	C:\Windows\System32\Ole32.dll
+0x00007ffa74a10000 - 0x00007ffa74abf000 	C:\Windows\System32\clbcatq.dll
+0x00007ffa768b0000 - 0x00007ffa76986000 	C:\Windows\System32\OleAut32.dll
+0x00007ffa69100000 - 0x00007ffa69123000 	C:\Windows\SYSTEM32\amsi.dll
+0x00007ffa64690000 - 0x00007ffa64711000 	C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.24080.9-0\MpOav.dll
+0x00007ffa50c20000 - 0x00007ffa50c28000 	C:\Windows\system32\wshunix.dll
+0x00007ffa72ee0000 - 0x00007ffa72f14000 	C:\Windows\SYSTEM32\ntmarta.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22000.120_none_9d947278b86cc467;C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\jbr\bin\server;C:\Users\morgu\AppData\Local\Temp\jna-104083454;C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.24080.9-0
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:51653,suspend=y,server=n -XX:TieredStopAtLevel=1 -Dspring.output.ansi.enabled=always -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -Dmanagement.endpoints.jmx.exposure.include=* --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.desktop/java.beans=ALL-UNNAMED -XX:+AllowEnhancedClassRedefinition -XX:+ClassUnloading -javaagent:C:\Users\morgu\.vaadin\intellij-plugin\hotswap-agent.jar -javaagent:C:\Users\morgu\AppData\Local\JetBrains\IntelliJIdea2024.2\captureAgent\debugger-agent.jar=file:/C:/Users/morgu/AppData/Local/Temp/capture.props -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false -Ddebugger.agent.enable.coroutines=true -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 
+java_command: com.arrelin.front.FrontApp
+java_class_path (initial): C:\Users\morgu\IdeaProjects\front-service\target\classes;C:\Users\morgu\.m2\repository\com\vaadin\vaadin\24.5.0\vaadin-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-internal\24.5.0\vaadin-internal-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-core-internal\24.5.0\vaadin-core-internal-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\flow-lit-template\24.5.0\flow-lit-template-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\flow-react\24.5.0\flow-react-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\flow-html-components\24.5.0\flow-html-components-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\flow-data\24.5.0\flow-data-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\flow-dnd\24.5.0\flow-dnd-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-lumo-theme\24.5.0\vaadin-lumo-theme-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-material-theme\24.5.0\vaadin-material-theme-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-accordion-flow\24.5.0\vaadin-accordion-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-avatar-flow\24.5.0\vaadin-avatar-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-button-flow\24.5.0\vaadin-button-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-checkbox-flow\24.5.0\vaadin-checkbox-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-combo-box-flow\24.5.0\vaadin-combo-box-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-confirm-dialog-flow\24.5.0\vaadin-confirm-dialog-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-custom-field-flow\24.5.0\vaadin-custom-field-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-date-picker-flow\24.5.0\vaadin-date-picker-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-date-time-picker-flow\24.5.0\vaadin-date-time-picker-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-details-flow\24.5.0\vaadin-details-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-time-picker-flow\24.5.0\vaadin-time-picker-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-select-flow\24.5.0\vaadin-select-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-side-nav-flow\24.5.0\vaadin-side-nav-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-dialog-flow\24.5.0\vaadin-dialog-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-form-layout-flow\24.5.0\vaadin-form-layout-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-field-highlighter-flow\24.5.0\vaadin-field-highlighter-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-grid-flow\24.5.0\vaadin-grid-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\org\apache\commons\commons-lang3\3.14.0\commons-lang3-3.14.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-icons-flow\24.5.0\vaadin-icons-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-virtual-list-flow\24.5.0\vaadin-virtual-list-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-list-box-flow\24.5.0\vaadin-list-box-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-login-flow\24.5.0\vaadin-login-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-messages-flow\24.5.0\vaadin-messages-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-ordered-layout-flow\24.5.0\vaadin-ordered-layout-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-progress-bar-flow\24.5.0\vaadin-progress-bar-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-popover-flow\24.5.0\vaadin-popover-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-radio-button-flow\24.5.0\vaadin-radio-button-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-renderer-flow\24.5.0\vaadin-renderer-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-split-layout-flow\24.5.0\vaadin-split-layout-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-tabs-flow\24.5.0\vaadin-tabs-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-text-field-flow\24.5.0\vaadin-text-field-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-upload-flow\24.5.0\vaadin-upload-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-notification-flow\24.5.0\vaadin-notification-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-app-layout-flow\24.5.0\vaadin-app-layout-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-context-menu-flow\24.5.0\vaadin-context-menu-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-menu-bar-flow\24.5.0\vaadin-menu-bar-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\collaboration-engine\6.3.0\collaboration-engine-6.3.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-board-flow\24.5.0\vaadin-board-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-charts-flow\24.5.0\vaadin-charts-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-cookie-consent-flow\24.5.0\vaadin-cookie-consent-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-crud-flow\24.5.0\vaadin-crud-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-flow-components-base\24.5.0\vaadin-flow-components-base-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-grid-pro-flow\24.5.0\vaadin-grid-pro-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-map-flow\24.5.0\vaadin-map-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-rich-text-editor-flow\24.5.0\vaadin-rich-text-editor-flow-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-core\24.5.0\vaadin-core-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-dev\24.5.0\vaadin-dev-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-dev-server\24.5.0\vaadin-dev-server-24.5.0.jar;C:\Users\morgu\.m2\repository\com\github\javaparser\javaparser-core\3.26.2\javaparser-core-3.26.2.jar;C:\Users\morgu\.m2\repository\io\methvin\directory-watcher\0.18.0\directory-watcher-0.18.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-dev-bundle\24.5.0\vaadin-dev-bundle-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-dev\24.5.0\hilla-dev-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\copilot\24.5.0\copilot-24.5.0.jar;C:\Users\morgu\.m2\repository\io\projectreactor\netty\reactor-netty\1.1.22\reactor-netty-1.1.22.jar;C:\Users\morgu\.m2\repository\io\projectreactor\netty\incubator\reactor-netty-incubator-quic\0.1.22\reactor-netty-incubator-quic-0.1.22.jar;C:\Users\morgu\.m2\repository\io\netty\incubator\netty-incubator-codec-native-quic\0.0.66.Final\netty-incubator-codec-native-quic-0.0.66.Final-linux-x86_64.jar;C:\Users\morgu\.m2\repository\io\netty\incubator\netty-incubator-codec-classes-quic\0.0.66.Final\netty-incubator-codec-classes-quic-0.0.66.Final.jar;C:\Users\morgu\.m2\repository\org\apache\commons\commons-configuration2\2.11.0\commons-configuration2-2.11.0.jar;C:\Users\morgu\.m2\repository\org\apache\commons\commons-text\1.12.0\commons-text-1.12.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\ui-tests\1.0.0\ui-tests-1.0.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-spring-boot-starter\24.5.0\vaadin-spring-boot-starter-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\vaadin-spring\24.5.0\vaadin-spring-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\flow-server\24.5.0\flow-server-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\servletdetector\throw-if-servlet3\1.0.2\throw-if-servlet3-1.0.2.jar;C:\Users\morgu\.m2\repository\org\apache\commons\commons-fileupload2-jakarta\2.0.0-M1\commons-fileupload2-jakarta-2.0.0-M1.jar;C:\Users\morgu\.m2\repository\org\apache\commons\commons-fileupload2-core\2.0.0-M1\commons-fileupload2-core-2.0.0-M1.jar;C:\Users\morgu\.m2\repository\commons-io\commons-io\2.17.0\commons-io-2.17.0.jar;C:\Users\morgu\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\morgu\.m2\repository\org\jsoup\jsoup\1.18.1\jsoup-1.18.1.jar;C:\Users\morgu\.m2\repository\com\helger\ph-css\7.0.2\ph-css-7.0.2.jar;C:\Users\morgu\.m2\repository\com\helger\commons\ph-commons\11.1.5\ph-commons-11.1.5.jar;C:\Users\morgu\.m2\repository\org\ow2\asm\asm\9.7\asm-9.7.jar;C:\Users\morgu\.m2\repository\com\vaadin\external\gentyref\1.2.0.vaadin1\gentyref-1.2.0.vaadin1.jar;C:\Users\morgu\.m2\repository\org\apache\commons\commons-compress\1.27.1\commons-compress-1.27.1.jar;C:\Users\morgu\.m2\repository\com\vaadin\flow-push\24.5.0\flow-push-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\external\atmosphere\atmosphere-runtime\3.0.5.slf4jvaadin1\atmosphere-runtime-3.0.5.slf4jvaadin1.jar;C:\Users\morgu\.m2\repository\com\vaadin\flow-client\24.5.0\flow-client-24.5.0.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-websocket\6.1.13\spring-websocket-6.1.13.jar;C:\Users\morgu\.m2\repository\org\reflections\reflections\0.10.2\reflections-0.10.2.jar;C:\Users\morgu\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\morgu\.m2\repository\org\javassist\javassist\3.30.2-GA\javassist-3.30.2-GA.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla\24.5.0\hilla-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-endpoint\24.5.0\hilla-endpoint-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-engine-core\24.5.0\hilla-engine-core-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-parser-jvm-core\24.5.0\hilla-parser-jvm-core-24.5.0.jar;C:\Users\morgu\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-yaml\2.17.2\jackson-dataformat-yaml-2.17.2.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-parser-jvm-plugin-backbone\24.5.0\hilla-parser-jvm-plugin-backbone-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-parser-jvm-plugin-nonnull\24.5.0\hilla-parser-jvm-plugin-nonnull-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-parser-jvm-plugin-subtypes\24.5.0\hilla-parser-jvm-plugin-subtypes-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-parser-jvm-plugin-model\24.5.0\hilla-parser-jvm-plugin-model-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-parser-jvm-plugin-transfertypes\24.5.0\hilla-parser-jvm-plugin-transfertypes-24.5.0.jar;C:\Users\morgu\.m2\repository\org\springframework\security\spring-security-core\6.3.3\spring-security-core-6.3.3.jar;C:\Users\morgu\.m2\repository\org\springframework\security\spring-security-crypto\6.3.3\spring-security-crypto-6.3.3.jar;C:\Users\morgu\.m2\repository\com\github\javaparser\javaparser-symbol-solver-core\3.26.2\javaparser-symbol-solver-core-3.26.2.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-parser-jvm-utils\24.5.0\hilla-parser-jvm-utils-24.5.0.jar;C:\Users\morgu\.m2\repository\io\swagger\core\v3\swagger-core\2.2.22\swagger-core-2.2.22.jar;C:\Users\morgu\.m2\repository\io\swagger\core\v3\swagger-annotations\2.2.22\swagger-annotations-2.2.22.jar;C:\Users\morgu\.m2\repository\io\swagger\core\v3\swagger-models\2.2.22\swagger-models-2.2.22.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-runtime-plugin-transfertypes\24.5.0\hilla-runtime-plugin-transfertypes-24.5.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\hilla-engine-runtime\24.5.0\hilla-engine-runtime-24.5.0.jar;C:\Users\morgu\.m2\repository\org\parttio\line-awesome\2.0.0\line-awesome-2.0.0.jar;C:\Users\morgu\.m2\repository\org\postgresql\postgresql\42.7.4\postgresql-42.7.4.jar;C:\Users\morgu\.m2\repository\org\checkerframework\checker-qual\3.42.0\checker-qual-3.42.0.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.3.4\spring-boot-starter-data-jpa-3.3.4.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter-aop\3.3.4\spring-boot-starter-aop-3.3.4.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-aop\6.1.13\spring-aop-6.1.13.jar;C:\Users\morgu\.m2\repository\org\aspectj\aspectjweaver\1.9.22.1\aspectjweaver-1.9.22.1.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.3.4\spring-boot-starter-jdbc-3.3.4.jar;C:\Users\morgu\.m2\repository\com\zaxxer\HikariCP\5.1.0\HikariCP-5.1.0.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-jdbc\6.1.13\spring-jdbc-6.1.13.jar;C:\Users\morgu\.m2\repository\org\hibernate\orm\hibernate-core\6.5.3.Final\hibernate-core-6.5.3.Final.jar;C:\Users\morgu\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\morgu\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\morgu\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\morgu\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\morgu\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\morgu\.m2\repository\com\fasterxml\classmate\1.7.0\classmate-1.7.0.jar;C:\Users\morgu\.m2\repository\net\bytebuddy\byte-buddy\1.14.19\byte-buddy-1.14.19.jar;C:\Users\morgu\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\morgu\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\morgu\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\morgu\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\morgu\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\morgu\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\morgu\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\morgu\.m2\repository\org\springframework\data\spring-data-jpa\3.3.4\spring-data-jpa-3.3.4.jar;C:\Users\morgu\.m2\repository\org\springframework\data\spring-data-commons\3.3.4\spring-data-commons-3.3.4.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-orm\6.1.13\spring-orm-6.1.13.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-context\6.1.13\spring-context-6.1.13.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-tx\6.1.13\spring-tx-6.1.13.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-beans\6.1.13\spring-beans-6.1.13.jar;C:\Users\morgu\.m2\repository\org\slf4j\slf4j-api\2.0.16\slf4j-api-2.0.16.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-aspects\6.1.13\spring-aspects-6.1.13.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter-validation\3.3.4\spring-boot-starter-validation-3.3.4.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter\3.3.4\spring-boot-starter-3.3.4.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.3.4\spring-boot-starter-logging-3.3.4.jar;C:\Users\morgu\.m2\repository\ch\qos\logback\logback-classic\1.5.8\logback-classic-1.5.8.jar;C:\Users\morgu\.m2\repository\ch\qos\logback\logback-core\1.5.8\logback-core-1.5.8.jar;C:\Users\morgu\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.23.1\log4j-to-slf4j-2.23.1.jar;C:\Users\morgu\.m2\repository\org\apache\logging\log4j\log4j-api\2.23.1\log4j-api-2.23.1.jar;C:\Users\morgu\.m2\repository\org\slf4j\jul-to-slf4j\2.0.16\jul-to-slf4j-2.0.16.jar;C:\Users\morgu\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\morgu\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.30\tomcat-embed-el-10.1.30.jar;C:\Users\morgu\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.1.Final\hibernate-validator-8.0.1.Final.jar;C:\Users\morgu\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-devtools\3.3.4\spring-boot-devtools-3.3.4.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot\3.3.4\spring-boot-3.3.4.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.3.4\spring-boot-autoconfigure-3.3.4.jar;C:\Users\morgu\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\morgu\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\morgu\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-core\6.1.13\spring-core-6.1.13.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-jcl\6.1.13\spring-jcl-6.1.13.jar;C:\Users\morgu\.m2\repository\com\google\guava\guava\33.3.0-jre\guava-33.3.0-jre.jar;C:\Users\morgu\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\morgu\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\morgu\.m2\repository\com\google\errorprone\error_prone_annotations\2.28.0\error_prone_annotations-2.28.0.jar;C:\Users\morgu\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\license-checker\1.13.0\license-checker-1.13.0.jar;C:\Users\morgu\.m2\repository\com\github\oshi\oshi-core\6.4.10\oshi-core-6.4.10.jar;C:\Users\morgu\.m2\repository\net\java\dev\jna\jna\5.14.0\jna-5.14.0.jar;C:\Users\morgu\.m2\repository\net\java\dev\jna\jna-platform\5.14.0\jna-platform-5.14.0.jar;C:\Users\morgu\.m2\repository\com\nimbusds\nimbus-jose-jwt\9.37.3\nimbus-jose-jwt-9.37.3.jar;C:\Users\morgu\.m2\repository\org\lucee\jcip-annotations\1.0.0\jcip-annotations-1.0.0.jar;C:\Users\morgu\.m2\repository\com\vaadin\open\8.5.0.3\open-8.5.0.3.jar;C:\Users\morgu\.m2\repository\com\vaadin\external\gwt\gwt-elemental\2.8.2.vaadin2\gwt-elemental-2.8.2.vaadin2.jar;C:\Users\morgu\.m2\repository\io\github\classgraph\classgraph\4.8.146\classgraph-4.8.146.jar;C:\Users\morgu\.m2\repository\commons-codec\commons-codec\1.16.1\commons-codec-1.16.1.jar;C:\Users\morgu\.m2\repository\org\projectlombok\lombok\1.18.34\lombok-1.18.34.jar;C:\Users\morgu\.m2\repository\jakarta\annotation\jakarta.annotation-api\3.0.0\jakarta.annotation-api-3.0.0.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.3.4\spring-boot-starter-web-3.3.4.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.3.4\spring-boot-starter-json-3.3.4.jar;C:\Users\morgu\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\morgu\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\morgu\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\morgu\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\morgu\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.17.2\jackson-module-parameter-names-2.17.2.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.3.4\spring-boot-starter-tomcat-3.3.4.jar;C:\Users\morgu\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.30\tomcat-embed-core-10.1.30.jar;C:\Users\morgu\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.30\tomcat-embed-websocket-10.1.30.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-web\6.1.13\spring-web-6.1.13.jar;C:\Users\morgu\.m2\repository\io\micrometer\micrometer-observation\1.13.4\micrometer-observation-1.13.4.jar;C:\Users\morgu\.m2\repository\io\micrometer\micrometer-commons\1.13.4\micrometer-commons-1.13.4.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-webmvc\6.1.13\spring-webmvc-6.1.13.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-expression\6.1.13\spring-expression-6.1.13.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter-webflux\3.3.4\spring-boot-starter-webflux-3.3.4.jar;C:\Users\morgu\.m2\repository\org\springframework\boot\spring-boot-starter-reactor-netty\3.3.4\spring-boot-starter-reactor-netty-3.3.4.jar;C:\Users\morgu\.m2\repository\io\projectreactor\netty\reactor-netty-http\1.1.22\reactor-netty-http-1.1.22.jar;C:\Users\morgu\.m2\repository\io\netty\netty-codec-http\4.1.113.Final\netty-codec-http-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-common\4.1.113.Final\netty-common-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-buffer\4.1.113.Final\netty-buffer-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-transport\4.1.113.Final\netty-transport-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-codec\4.1.113.Final\netty-codec-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-handler\4.1.113.Final\netty-handler-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-codec-http2\4.1.113.Final\netty-codec-http2-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-resolver-dns\4.1.113.Final\netty-resolver-dns-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-resolver\4.1.113.Final\netty-resolver-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-codec-dns\4.1.113.Final\netty-codec-dns-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-resolver-dns-native-macos\4.1.113.Final\netty-resolver-dns-native-macos-4.1.113.Final-osx-x86_64.jar;C:\Users\morgu\.m2\repository\io\netty\netty-resolver-dns-classes-macos\4.1.113.Final\netty-resolver-dns-classes-macos-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-transport-native-epoll\4.1.113.Final\netty-transport-native-epoll-4.1.113.Final-linux-x86_64.jar;C:\Users\morgu\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.113.Final\netty-transport-native-unix-common-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.113.Final\netty-transport-classes-epoll-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\projectreactor\netty\reactor-netty-core\1.1.22\reactor-netty-core-1.1.22.jar;C:\Users\morgu\.m2\repository\io\netty\netty-handler-proxy\4.1.113.Final\netty-handler-proxy-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\io\netty\netty-codec-socks\4.1.113.Final\netty-codec-socks-4.1.113.Final.jar;C:\Users\morgu\.m2\repository\org\springframework\spring-webflux\6.1.13\spring-webflux-6.1.13.jar;C:\Users\morgu\.m2\repository\io\projectreactor\reactor-core\3.6.10\reactor-core-3.6.10.jar;C:\Users\morgu\.m2\repository\org\reactivestreams\reactive-streams\1.0.4\reactive-streams-1.0.4.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.2\lib\idea_rt.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     bool AllowEnhancedClassRedefinition           = true                                      {product} {command line}
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     bool ClassUnloading                           = true                                      {product} {command line}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 10                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 4194304                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 536870912                                 {product} {ergonomic}
+     bool ManagementServer                         = true                                      {product} {command line}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 8573157376                                {product} {ergonomic}
+   size_t MaxNewSize                               = 5142216704                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 4194304                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 4096                                   {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 0                                      {pd product} {ergonomic}
+     bool ProfileInterpreter                       = false                                  {pd product} {command line}
+    uintx ProfiledCodeHeapSize                     = 0                                      {pd product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 8573157376                             {manageable} {ergonomic}
+     intx TieredStopAtLevel                        = 1                                         {product} {command line}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+PATH=C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Program Files\AmneziaWG\;C:\Users\morgu\AppData\Local\Microsoft\WindowsApps;C:\Users\morgu\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\morgu\AppData\Local\Programs\Fiddler;C:\Users\morgu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\Scripts;
+USERNAME=morgu
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD
+TMP=C:\Users\morgu\AppData\Local\Temp
+TEMP=C:\Users\morgu\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+JNI global refs:
+JNI global refs: 128, weak refs: 18817
+
+JNI global refs memory usage: 2923, weak refs: 191937
+
+Process memory usage:
+Resident Set Size: 470480K (1% of 33478752K total physical memory with 18739176K free physical memory)
+
+OOME stack traces (most recent first):
+Classloader memory used:
+Loader jdk.internal.loader.ClassLoaders$AppClassLoader                                 : 89016K
+Loader bootstrap                                                                       : 30133K
+Loader jdk.internal.loader.ClassLoaders$PlatformClassLoader                            : 3857K
+Loader org.springframework.boot.web.embedded.tomcat.TomcatEmbeddedWebappClassLoader    : 3033K
+Loader net.bytebuddy.utility.dispatcher.JavaDispatcher$DynamicClassLoader              : 1517K
+
+Classes loaded by more than one classloader:
+Class org.hotswap.agent.plugin.deltaspike.jsf.ViewConfigReloader                      : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.ViewConfigTransformer$1         : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.weld_jakarta.transformer.BeanDeploymentArchiveTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld_jakarta.WeldJakartaPlugin                         : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.webobjects.HotswapWebObjectsPlugin$ClearValidationCache: loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator$ConstantPool                 : loaded 3 times (x 79B)
+Class org.hotswap.agent.plugin.osgiequinox.OsgiEquinoxPlugin                          : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.spring.boot.env.BasePropertiesPropertySourceLoader     : loaded 3 times (x 73B)
+Class org.hotswap.agent.plugin.jdk.JdkPlugin                                          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.boot.env.HotswapSpringProperties                : loaded 3 times (x 152B)
+Class org.hotswap.agent.plugin.spring.transformers.ClassPathBeanDefinitionScannerTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.core.ResetSpringStaticCaches                    : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate_jakarta.proxy.SessionFactoryProxy            : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.vaadin.VaadinIntegration                               : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.spring.transformers.BeanFactoryTransformer             : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld_jakarta.WeldJakartaPlugin$1                       : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.reload.ClassChangedCommand                      : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.weld.transformer.AbstractClassBeanTransformer          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.api.TransformationState                          : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.owb_jakarta.transformer.AbstractProducerTransformer$1  : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.owb_jakarta.command.BeanClassRefreshCommand            : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.owb.transformer.AbstractProducerTransformer            : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.osgiequinox.OsgiEquinoxPlugin$1                        : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.transformers.ConfigurationClassPostProcessorTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.transformers.ProxyReplacerTransformer           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.listener.SpringEvent                            : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.hibernate3.jpa.Hibernate3JPATransformers               : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.wicket.WicketPlugin                                    : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.weld_jakarta.BeanReloadStrategy                        : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.weld.WeldPlugin                                        : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.owb_jakarta.BeanReloadStrategy                         : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.log4j2.Log4j2Plugin                                    : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.spring.scanner.SpringBeanWatchEventListener            : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.hibernate3.jpa.Hibernate3JPARefreshCommands            : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.cxf.jaxrs.ClassResourceInfoProxyHelper$CriProxyMethodHandler: loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator$ConstantPool$ValueEntry      : loaded 3 times (x 69B)
+Class org.hotswap.agent.plugin.mojarra.command.ReloadManagedBeanCommand               : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.getbean.DetachableBeanHolder                    : loaded 3 times (x 73B)
+Class org.hotswap.agent.plugin.jackson.JacksonPlugin                                  : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.DeltaSpikeProxyContextualLifecycleTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.tomcat.WebappLoaderTransformer                         : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.getbean.SpringHotswapAgentProxy                 : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.spring.reload.XmlsChangedCommand                       : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.jvm.ClassInitPlugin$1                                  : loaded 3 times (x 78B)
+Class org.hotswap.agent.plugin.mojarra.transformer.MojarraTransformer                 : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.boot.env.v2.PropertiesPropertySourceLoader      : loaded 3 times (x 74B)
+Class org.hotswap.agent.plugin.spring.boot.transformers.PropertySourceTransformer     : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.SpringChangesAnalyzer$1                         : loaded 3 times (x 118B)
+Class org.hotswap.agent.plugin.jvm.ClassInitPlugin$2                                  : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.deltaspike.command.ProxyClassLoadingDelegate$1         : loaded 3 times (x 79B)
+Class org.hotswap.agent.plugin.owb.OwbPlugin                                          : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.jersey2.Jersey2Plugin                                  : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.spring.transformers.PostProcessorRegistrationDelegateTransformer$1: loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.hibernate3.session.util.ProxyUtil                      : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate.HibernateRefreshCommands                     : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.jvm.AnonymousClassInfos                                : loaded 3 times (x 74B)
+Class org.hotswap.agent.plugin.jersey2.Jersey2Plugin$1                                : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.scanner.BeanDefinitionChangeEvent               : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.weld.command.BeanClassRefreshAgent                     : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.owb_jakarta.transformer.CdiContextsTransformer         : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb.command.BeanClassRefreshAgent                      : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb_jakarta.transformer.ProxyFactoryTransformer$1      : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.spring.reload.BeanFactoryAssistant                     : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.spring.scanner.ClassPathBeanRefreshCommand             : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.idea.IdeaPlugin                                        : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.ViewConfigTransformer           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb_jakarta.transformer.ProxyFactoryTransformer$2      : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.owb_jakarta.OwbJakartaPlugin$1                         : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.osgiequinox.OsgiEquinoxPlugin$AutoHotswapPathEventListener: loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.zk.ZkPlugin                                            : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.boot.env.v1.YamlPropertySourceLoader            : loaded 3 times (x 74B)
+Class org.hotswap.agent.plugin.hibernate.HibernatePlugin                              : loaded 3 times (x 74B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.DeltaspikeContextsTransformer   : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.jbossmodules.PrependingMap                             : loaded 3 times (x 118B)
+Class org.hotswap.agent.plugin.wildfly.el.PurgeWildFlyBeanELResolverCacheCommand      : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.spring.transformers.api.ReloadablePropertySource       : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.mybatis.proxy.ConfigurationProxy                       : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.owb.transformer.BeansDeployerTransformer               : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.jersey1.Jersey1Plugin                                  : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.spring.transformers.api.BeanFactoryLifecycle           : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.mybatisplus.transformers.MyBatisPlusTransformers       : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.webobjects.HotswapWebObjectsPlugin$ClearKVCCache       : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.logback.LogbackPlugin$1                                : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.tomcat.WatcherTomcatWebappClassLoader                  : loaded 3 times (x 113B)
+Class org.hotswap.agent.plugin.proxy.hscglib.CglibProxyTransformer                    : loaded 3 times (x 84B)
+Class org.hotswap.agent.plugin.weld.ArchivePathHelper                                 : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator$FieldInfo                    : loaded 3 times (x 69B)
+Class org.hotswap.agent.plugin.owb.OwbClassSignatureHelper$1                          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.utils.ResourceUtils                             : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.ibatis.IBatisConfigurationHandler                      : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.boot.env.HotswapSpringReloadMap                 : loaded 3 times (x 128B)
+Class org.hotswap.agent.plugin.hibernate_jakarta.proxy.SessionFactoryProxy$1          : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.weld.beans.ContextualReloadHelper                      : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.hscglib.ParentLastClassLoader                    : loaded 3 times (x 99B)
+Class org.hotswap.agent.plugin.proxy.ProxyTransformationUtils$1                       : loaded 3 times (x 118B)
+Class org.hotswap.agent.plugin.owb_jakarta.OwbClassSignatureHelper                    : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.getbean.ProxyReplacer                           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hotswapper.Trigger                                     : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.mybatisplus.proxy.ConfigurationPlusProxy$1             : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.owb_jakarta.OwbClassSignatureHelper$1                  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.boot.env.v2.YamlPropertySourceLoader            : loaded 3 times (x 74B)
+Class org.hotswap.agent.plugin.spring.utils.AnnotatedBeanDefinitionUtils              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld.command.BeanClassRefreshCommand                   : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.proxy.hscglib.CglibEnhancerProxyBytecodeGenerator      : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.deltaspike.jsf.ViewConfigReloadCommand                 : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.deltaspike.command.PartialBeanClassRefreshCommand      : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.weld.transformer.CdiContextsTransformer                : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator$1                            : loaded 3 times (x 73B)
+Class org.hotswap.agent.plugin.zk.ZkPlugin$1                                          : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.boot.transformers.PropertySourceLoaderTransformer$1: loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.DeltaSpikeProxyTransformer$1    : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.proxy.api.SinglestepProxyTransformer                   : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.spring.boot.transformers.PropertySourceLoaderTransformer$2: loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.spring.reload.SpringChangedReloadCommand               : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.DeltaSpikeProxyTransformer$2    : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.deltaspike.command.ProxyClassLoadingDelegate           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.api.ProxyBytecodeGenerator                       : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.owb_jakarta.command.ProxyRefreshAgent                  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.boot.transformers.PropertySourceLoaderTransformer$3: loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.DeltaSpikeProxyTransformer$3    : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.weld_jakarta.WeldClassSignatureHelper                  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb_jakarta.beans.OwbHotswapContext                    : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.owb.command.ProxyRefreshAgent                          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.jetty.JettyPlugin                                      : loaded 3 times (x 69B)
+Class org.hotswap.agent.plugin.spring.boot.transformers.PropertySourceLoaderTransformer$4: loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.spring.core.AutowiredAnnotationProcessor               : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.DeltaSpikeProxyTransformer      : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.mojarra.transformer.LifecycleImplTransformer           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.core.ResetBeanFactoryPostProcessorCaches        : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.core.ResetAnnotationCache                       : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.utils.RegistryUtils                             : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.reload.YamlChangedCommand                       : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.spring.listener.SpringListener                         : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.jvm.AnonymousClassInfos$AnonymousClassInfoMatcher      : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.mybatisplus.transformers.MybatisPlusConfigurationCaller: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb.beans.ContextualReloadHelper                       : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.tomcat.TomcatSetup                                     : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.utils.ClassSignatureComparer                    : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb_jakarta.command.ProxyClassLoadingDelegate$1        : loaded 3 times (x 79B)
+Class org.hotswap.agent.plugin.spring.transformers.PostProcessorRegistrationDelegateTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.sponge.ReloadListenersCommand$HandleData               : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.weld_jakarta.transformer.AbstractClassBeanTransformer  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld.WeldClassSignatureHelper$1                        : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.elresolver.ELResolverPlugin                            : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.mojarra.MojarraConstants                               : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.mybatis.util.ClassUtils                                : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.core.ResetBeanPostProcessorCaches               : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.reload.SpringBeanReload                         : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.hibernate_jakarta.proxy.EntityManagerFactoryProxy$1    : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.undertow.UndertowTransformer                           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike.command.RepositoryRefreshAgent              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.resteasy.RefreshRegistryCommand                        : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.cdi.HaCdiCommons                                       : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.api.PropertySourceReloader                      : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.spring.transformers.api.ValueResolverSupport           : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.vaadin.VaadinPlugin$ResourceChangedCommand             : loaded 3 times (x 84B)
+Class org.hotswap.agent.plugin.myfaces.command.ReloadManagedBeanCommand               : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.reload.SpringReloadConfig                       : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld.transformer.BeanDeploymentArchiveTransformer      : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.watchResources.WatchResourcesPlugin                    : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.cxf.jaxrs.ClassResourceInfoProxyHelper$1               : loaded 3 times (x 79B)
+Class org.hotswap.agent.plugin.proxy.ProxyTransformationUtils                         : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.boot.env.HotswapSpringPropertiesReloader        : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.hotswapper.HotSwapperJpda$1                            : loaded 3 times (x 101B)
+Class org.hotswap.agent.plugin.mybatis.proxy.SpringMybatisConfigurationProxy          : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.cxf.jaxrs.ClassResourceInfoProxyHelper$2               : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.spring.listener.SpringEventSource                      : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.spring.SpringBeanClassFileTransformer                  : loaded 3 times (x 78B)
+Class org.hotswap.agent.plugin.mybatisplus.transformers.PlusSqlSessionFactoryBeanCaller: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.mybatis.proxy.ConfigurationProxy$1                     : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.transformer.DeltaSpikeProxyTransformer$1: loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.weld.command.ProxyClassLoadingDelegate                 : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator$ExceptionTableEntry          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.myfaces.transformer.LifecycleImplTransformer           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate3.jpa.Hibernate3JPAHelper                     : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate_jakarta.HibernatePersistenceHelper           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate.HibernateTransformers                        : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.vaadin.VaadinPlugin                                    : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.transformer.DeltaSpikeProxyTransformer$2: loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.hotswapper.HotswapperPlugin                            : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.mybatis.util.XMLConfigBuilderUtils                     : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld_jakarta.WeldClassSignatureHelper$1                : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb.transformer.CdiContextsTransformer                 : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate3.session.Hibernate3RefreshCommand            : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld_jakarta.command.ProxyClassLoadingDelegate$1       : loaded 3 times (x 79B)
+Class org.hotswap.agent.plugin.proxy.ProxyClassSignatureHelper                        : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb.command.ProxyClassLoadingDelegate                  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.myfaces.MyFacesPlugin                                  : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.myfaces.transformer.ManagedBeanResolverTransformer     : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.getbean.EnhancerProxyCreater                    : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.spring.core.ResetRequestMappingCaches                  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate.proxy.SessionFactoryProxy                    : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.jvm.ClassInitPlugin                                    : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.omnifaces.OmnifacesPlugin                              : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.logback.LogbackPlugin                                  : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.spring.SpringChangesAnalyzer                           : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.spring.files.PropertiesChangeEvent                     : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.mybatis.transformers.ConfigurationCaller               : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld.BeanReloadStrategy                                : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.owb_jakarta.OwbJakartaPlugin                           : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.deltaspike.DeltaSpikePlugin                            : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.weld_jakarta.beans.WeldHotswapContext                  : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.weld.command.ProxyClassLoadingDelegate$1               : loaded 3 times (x 79B)
+Class org.hotswap.agent.plugin.owb.ArchivePathHelper                                  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.mojarra.MojarraPlugin                                  : loaded 3 times (x 73B)
+Class org.hotswap.agent.plugin.spring.core.BeanDefinitionProcessor                    : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate3.session.Hibernate3Plugin                    : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.hibernate3.session.proxy.ReInitializableHelper         : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate_jakarta.proxy.EntityManagerFactoryProxy      : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.DeltaSpikeJakartaPlugin             : loaded 3 times (x 73B)
+Class org.hotswap.agent.plugin.spring.reload.PropertiesChangedCommand                 : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.jvm.AnonymousClassInfos$1                              : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.mybatis.MyBatisRefreshCommands                         : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.hscglib.GeneratorParametersRecorder              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.jvm.AnonymousClassInfos$2                              : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.owb.OwbClassSignatureHelper                            : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.jvm.AnonymousClassInfos$3                              : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.freemarker.FreeMarkerPlugin                            : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.cxf.jaxrs.ClassResourceInfoProxyHelper                 : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.transformer.DeltaspikeContextsTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb.transformer.AbstractProducerTransformer$1          : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.owb.command.ProxyClassLoadingDelegate$1                : loaded 3 times (x 79B)
+Class org.hotswap.agent.plugin.weld.WeldPlugin$1                                      : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.proxy.api.ProxyBytecodeTransformer                     : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.spring.reload.ClassChangeEvent                         : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.spring.reload.BeanChangeEvent                          : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.hibernate_jakarta.HibernateRefreshCommands             : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate.HibernatePlugin$1                            : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.hibernate.proxy.EntityManagerFactoryProxy              : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.weld_jakarta.command.BdaAgentRegistry                  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.mojarra.transformer.BeanManagerTransformer             : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate3.jpa.proxy.EntityManagerFactoryProxy$1       : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.hibernate3.session.proxy.ReInitializable               : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.mybatis.transformers.SqlSessionFactoryBeanCaller       : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld_jakarta.command.BeanClassRefreshCommand           : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.proxy.hscglib.GeneratorParametersTransformer           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.boot.env.v2.LowVersionPropertiesPropertySourceLoader: loaded 3 times (x 74B)
+Class org.hotswap.agent.plugin.jvm.AnonymousClassPatchPlugin$1                        : loaded 3 times (x 78B)
+Class org.hotswap.agent.plugin.sponge.SpongePlugin                                    : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.ibatis.IBatisPlugin                                    : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.spring.boot.env.v1.PropertiesPropertySourceLoader      : loaded 3 times (x 74B)
+Class org.hotswap.agent.plugin.spring.boot.transformers.PropertySourceLoaderTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.boot.SpringBootPlugin                           : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.owb.beans.OwbHotswapContext                            : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.spring.transformers.PlaceholderConfigurerSupportTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.jvm.AnonymousClassInfo                                 : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.mybatisplus.proxy.SpringMybatisPlusConfigurationProxy  : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.deltaspike.jsf.ViewConfigResolverUtils                 : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld_jakarta.transformer.CdiContextsTransformer        : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate.proxy.EntityManagerFactoryProxy$1            : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.command.RepositoryRefreshAgent      : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb_jakarta.ArchivePathHelper                          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate3.session.Hibernate3Transformers              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.command.PartialBeanClassRefreshAgent: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike.command.RepositoryRefreshCommand            : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator$ConstantPool$Entry           : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.tomcat.TomcatPlugin                                    : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate_jakarta.HibernateJakartaPlugin$1             : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.hibernate3.session.proxy.ReInitializableHelper$1       : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.command.PartialBeanClassRefreshCommand: loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.weld.command.BeanReloadExecutor                        : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator$ConstantPool$IndirectEntry   : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.owb_jakarta.command.ProxyClassLoadingDelegate          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.boot.listener.PropertySourceChangeListener      : loaded 3 times (x 78B)
+Class org.hotswap.agent.plugin.ibatis.IBatisTransformers                              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.mybatis.transformers.MyBatisTransformers               : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator$PrimitiveTypeInfo            : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.spring.transformers.api.ReloadableResourcePropertySource: loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.mybatis.transformers.MyBatisTransformers$1             : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.glassfish.GlassFishPlugin                              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.transformer.RepositoryTransformer   : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.transformer.PartialBeanExtensionTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb.command.BeanClassRefreshCommand                    : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.proxy.hscglib.CglibEnhancerProxyBytecodeGenerator$FieldState: loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.mojarra.MojarraPlugin$1                                : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.transformers.XmlBeanDefinitionScannerTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.thymeleaf.ThymeleafPlugin                              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.mybatisplus.proxy.ConfigurationPlusProxy               : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.transformer.DeltaSpikeProxyTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.transformer.HaAfteBeanDiscovery     : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.hibernate_jakarta.HibernateTransformers                : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.jbossmodules.ModuleClassLoaderTransformer              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld.WeldClassSignatureHelper                          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb_jakarta.transformer.BeansDeployerTransformer       : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.boot.env.ListPropertySourceReloader             : loaded 3 times (x 80B)
+Class org.hotswap.agent.plugin.velocity.VelocityPlugin                                : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.cxf.jaxrs.CxfJAXRSCommand                              : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.weld.transformer.ProxyFactoryTransformer$1             : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.proxy.hscglib.GeneratorParams                          : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.owb.transformer.ProxyFactoryTransformer$1              : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.weld.transformer.ProxyFactoryTransformer$2             : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.owb.transformer.ProxyFactoryTransformer$2              : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.myfaces.MyFacesPlugin$1                                : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.files.PropertyReload                            : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.cxf.jaxrs.CxfJAXRSTransformer                          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb_jakarta.transformer.ProxyFactoryTransformer        : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.wildfly.el.WildFlyELResolverPlugin                     : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.cxf.jaxrs.HaCdiExtraCxfContext                         : loaded 3 times (x 74B)
+Class org.hotswap.agent.plugin.deltaspike.DeltaspikeClassSignatureHelper              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.hscglib.CglibEnhancerProxyTransformer            : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.owb_jakarta.beans.ContextualReloadHelper               : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.cdi.HaCdiExtraContext                                  : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.spring.core.ConfigurationClassPostProcessorEnhance     : loaded 3 times (x 73B)
+Class org.hotswap.agent.plugin.spring.core.ResetTransactionAttributeCaches            : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate_jakarta.HibernateJakartaPlugin               : loaded 3 times (x 74B)
+Class org.hotswap.agent.plugin.glassfish.WebappClassLoaderTransformer                 : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.hscglib.CglibProxyBytecodeGenerator              : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.files.XmlBeanDefinitionScannerAgent             : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.spring.getbean.HotswapSpringInvocationHandler          : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.mybatisplus.MyBatisPlusPlugin                          : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.proxy.hscglib.CglibProxyBytecodeTransformer            : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.owb_jakarta.transformer.AbstractProducerTransformer    : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld_jakarta.command.BeanReloadExecutor                : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb.BeanReloadStrategy                                 : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.PartialBeanTransformer          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.api.AbstractProxyTransformer                     : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.mybatis.transformers.XPathParserCaller                 : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.command.RepositoryRefreshCommand    : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.spring.core.BeanFactoryProcessor                       : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.reload.SpringChangedAgent                       : loaded 3 times (x 89B)
+Class org.hotswap.agent.plugin.mybatisplus.MyBatisPlusRefreshCommands                 : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.webobjects.HotswapWebObjectsPlugin$ClearComponentCache : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.hibernate.HibernatePersistenceHelper                   : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.jvm.AnonymousClassPatchPlugin                          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.command.ProxyClassLoadingDelegate$1 : loaded 3 times (x 79B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator$ProxyMethod                  : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.jersey1.Jersey1Plugin$1                                : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.transformers.InitDestroyAnnotationBeanPostProcessorTransformer: loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.owb.OwbPlugin$1                                        : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.mybatis.MyBatisPlugin                                  : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.weld_jakarta.command.ProxyClassLoadingDelegate         : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.api.ProxyTransformer                             : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.hibernate.proxy.SessionFactoryProxy$1                  : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.HaAfteBeanDiscovery             : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.mybatisplus.transformers.MyBatisPlusTransformers$1     : loaded 3 times (x 78B)
+Class org.hotswap.agent.plugin.jbossmodules.JBossModulesPlugin                        : loaded 3 times (x 69B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator                              : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.spring.files.PropertiesChangeEvent$PropertyChangeItem  : loaded 3 times (x 74B)
+Class org.hotswap.agent.plugin.hibernate3.jpa.Hibernate3JPAPlugin                     : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.hotswapper.HotSwapperJpda                              : loaded 3 times (x 73B)
+Class org.hotswap.agent.plugin.mybatisplus.transformers.MyBatisPlusTransformers$2     : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.weld_jakarta.command.BeanClassRefreshAgent             : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.proxy.java.ProxyGenerator$MethodInfo                   : loaded 3 times (x 69B)
+Class org.hotswap.agent.plugin.owb_jakarta.command.BeanClassRefreshAgent              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hotswapper.HotSwapper                                  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld_jakarta.transformer.ProxyFactoryTransformer       : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld.beans.WeldHotswapContext                          : loaded 3 times (x 66B)
+Class org.hotswap.agent.plugin.proxy.api.MultistepProxyTransformer                    : loaded 3 times (x 84B)
+Class org.hotswap.agent.plugin.elresolver.PurgeBeanELResolverCacheCommand             : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.spring.transformers.ResourcePropertySourceTransformer  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.mybatis.proxy.SpringMapperFactoryBean                  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.undertow.UndertowPlugin                                : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.cxf.jaxrs.CxfJAXRSPlugin                               : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.myfaces.MyFacesConstants                               : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.SpringPlugin                                    : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.freemarker.FreeMarkerPlugin$1                          : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.webobjects.HotswapWebObjectsPlugin$ClearActionCache    : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.spring.scanner.ClassPathBeanDefinitionScannerAgent     : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.hibernate3.jpa.Hibernate3JPAPlugin$1                   : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.hotswapper.HotswapperPlugin$1                          : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.jackson.JacksonPlugin$1                                : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.weld_jakarta.beans.ContextualReloadHelper              : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld.transformer.ProxyFactoryTransformer               : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.ReloadJavaProxyCommand                           : loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.owb.transformer.ProxyFactoryTransformer                : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.api.MultistepProxyTransformer$1                  : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.RedefinitionScheduler                            : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.proxy.ProxyPlugin                                      : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.sponge.ReloadListenersCommand$1                        : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.weld.command.BdaAgentRegistry                          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.elresolver.PurgeJbossReflectionUtil                    : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.command.ProxyClassLoadingDelegate   : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.spring.transformers.support.InitMethodEnhance          : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate3.session.proxy.OverrideConfig                : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.weld_jakarta.ArchivePathHelper                         : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.proxy.api.AbstractProxyBytecodeTransformer             : loaded 3 times (x 76B)
+Class org.hotswap.agent.plugin.myfaces.transformer.MyFacesTransformer                 : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.sponge.ReloadListenersCommand                          : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.vaadin.VaadinPlugin$UpdateRoutesCommand                : loaded 3 times (x 83B)
+Class org.hotswap.agent.plugin.weblogic.WeblogicPlugin                                : loaded 3 times (x 68B)
+Class org.hotswap.agent.plugin.deltaspike_jakarta.DeltaspikeClassSignatureHelper      : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.webobjects.HotswapWebObjectsPlugin                     : loaded 3 times (x 70B)
+Class org.hotswap.agent.plugin.spring.transformers.ConfigurationClassPostProcessorTransformer$1: loaded 3 times (x 77B)
+Class org.hotswap.agent.plugin.hotswapper.HotswapperCommand                           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.deltaspike.transformer.RepositoryTransformer           : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.resteasy.ResteasyRegistryPlugin                        : loaded 3 times (x 73B)
+Class org.hotswap.agent.plugin.log4j2.Log4j2Plugin$1                                  : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.hibernate3.jpa.proxy.EntityManagerFactoryProxy         : loaded 3 times (x 71B)
+Class org.hotswap.agent.plugin.hibernate3.session.proxy.OverrideConfig$ConfiguredBy   : loaded 3 times (x 75B)
+Class org.hotswap.agent.plugin.hibernate3.session.proxy.SessionFactoryProxy$1         : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.mybatis.proxy.SpringMybatisConfigurationProxy$1        : loaded 3 times (x 72B)
+Class org.hotswap.agent.plugin.deltaspike.command.PartialBeanClassRefreshAgent        : loaded 3 times (x 67B)
+Class org.hotswap.agent.plugin.hibernate3.session.proxy.SessionFactoryProxy           : loaded 3 times (x 70B)
+Class com.arrelin.front.views.MainLayout                                              : loaded 2 times (x 154B)
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 22000 (10.0.22000.2538)
+OS uptime: 2 days 13:34 hours
+Hyper-V role detected
+
+CPU: total 12 (initial active 12) (12 cores per cpu, 2 threads per core) family 25 model 33 stepping 0 microcode 0x0, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt, hv, rdtscp, rdpid, fsrm, f16c, cet_ss
+Processor Information for all 12 processors :
+  Max Mhz: 3701, Current Mhz: 3701, Mhz Limit: 3701
+
+Memory: 4k page, system-wide physical 32694M (18293M free)
+TotalPageFile size 39606M (AvailPageFile size 17473M)
+current process WorkingSet (physical memory assigned to process): 459M, peak: 633M
+current process commit charge ("private bytes"): 499M, peak: 818M
+
+vm_info: OpenJDK 64-Bit Server VM (21.0.4+13-b509.17) for windows-amd64 JRE (21.0.4+13-b509.17), built on 2024-09-04 by "builduser" with MS VC++ 16.10 / 16.11 (VS2019)
+
+END.
